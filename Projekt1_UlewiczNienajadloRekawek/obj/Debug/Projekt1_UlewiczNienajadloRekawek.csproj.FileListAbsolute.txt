@@ -1,0 +1,2 @@
+E:\Projekty\C#\Pierwszerepo\PoczatekC-\Hello\Projekt1_UlewiczNienajadloRekawek\Projekt1_UlewiczNienajadloRekawek\bin\Debug\Projekt1_UlewiczNienajadloRekawek.exe.config
+E:\Projekty\C#\Projekt1_UlewiczNienajadloRekawek\Projekt1_UlewiczNienajadloRekawek\bin\Debug\Projekt1_UlewiczNienajadloRekawek.exe.config
