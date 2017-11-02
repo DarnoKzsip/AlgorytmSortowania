@@ -4,3 +4,4 @@ E:\Projekty\C#\Projekt1_UlewiczNienajadloRekawek\Projekt1_UlewiczNienajadloRekaw
 C:\Users\Marcin\Desktop\C#\Projekt1_UlewiczNienajadloRekawek\Projekt1_UlewiczNienajadloRekawek\bin\Debug\Projekt1_UlewiczNienajadloRekawek.exe.config
 =======
 >>>>>>> d717df495a6201584057ae96c9ef8fdcf93cbb52
+E:\Projekty\C#\Projekt1\Projekt1_UlewiczNienajadloRekawek\Projekt1_UlewiczNienajadloRekawek\bin\Debug\Projekt1_UlewiczNienajadloRekawek.exe.config
