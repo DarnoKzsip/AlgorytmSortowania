@@ -1,7 +1,9 @@
-E:\Projekty\C#\Pierwszerepo\PoczatekC-\Hello\Projekt1_UlewiczNienajadloRekawek\Projekt1_UlewiczNienajadloRekawek\bin\Debug\Projekt1_UlewiczNienajadloRekawek.exe.config
-E:\Projekty\C#\Projekt1_UlewiczNienajadloRekawek\Projekt1_UlewiczNienajadloRekawek\bin\Debug\Projekt1_UlewiczNienajadloRekawek.exe.config
-<<<<<<< HEAD
-C:\Users\Marcin\Desktop\C#\Projekt1_UlewiczNienajadloRekawek\Projekt1_UlewiczNienajadloRekawek\bin\Debug\Projekt1_UlewiczNienajadloRekawek.exe.config
-=======
->>>>>>> d717df495a6201584057ae96c9ef8fdcf93cbb52
 E:\Projekty\C#\Projekt1\Projekt1_UlewiczNienajadloRekawek\Projekt1_UlewiczNienajadloRekawek\bin\Debug\Projekt1_UlewiczNienajadloRekawek.exe.config
+E:\Projekty\C#\Projekt1\Projekt1_UlewiczNienajadloRekawek\Projekt1_UlewiczNienajadloRekawek\bin\Debug\Projekt1_UlewiczNienajadloRekawek.exe
+E:\Projekty\C#\Projekt1\Projekt1_UlewiczNienajadloRekawek\Projekt1_UlewiczNienajadloRekawek\bin\Debug\Projekt1_UlewiczNienajadloRekawek.pdb
+E:\Projekty\C#\Projekt1\Projekt1_UlewiczNienajadloRekawek\Projekt1_UlewiczNienajadloRekawek\obj\Debug\Projekt1_UlewiczNienajadloRekawek.csprojResolveAssemblyReference.cache
+E:\Projekty\C#\Projekt1\Projekt1_UlewiczNienajadloRekawek\Projekt1_UlewiczNienajadloRekawek\obj\Debug\Projekt1_UlewiczNienajadloRekawek.UNRGlowne.resources
+E:\Projekty\C#\Projekt1\Projekt1_UlewiczNienajadloRekawek\Projekt1_UlewiczNienajadloRekawek\obj\Debug\Projekt1_UlewiczNienajadloRekawek.Properties.Resources.resources
+E:\Projekty\C#\Projekt1\Projekt1_UlewiczNienajadloRekawek\Projekt1_UlewiczNienajadloRekawek\obj\Debug\Projekt1_UlewiczNienajadloRekawek.csproj.GenerateResource.Cache
+E:\Projekty\C#\Projekt1\Projekt1_UlewiczNienajadloRekawek\Projekt1_UlewiczNienajadloRekawek\obj\Debug\Projekt1_UlewiczNienajadloRekawek.exe
+E:\Projekty\C#\Projekt1\Projekt1_UlewiczNienajadloRekawek\Projekt1_UlewiczNienajadloRekawek\obj\Debug\Projekt1_UlewiczNienajadloRekawek.pdb

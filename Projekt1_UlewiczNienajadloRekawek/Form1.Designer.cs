@@ -42,21 +42,22 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.UNRTBoxMinimalnaPróba = new System.Windows.Forms.TextBox();
+            this.UNRTBoxMinimalnaProba = new System.Windows.Forms.TextBox();
             this.UNRTBoxMaxRozmiarTablic = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.UNRTBoxDowolnaGranicaPrzedziału = new System.Windows.Forms.TextBox();
+            this.UNRTBoxDolnaGranicaPrzedzialu = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.UNRTBoxGórnaGranicaPrzedziału = new System.Windows.Forms.TextBox();
+            this.UNRTBoxGornaGranicaPrzedzialu = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.UNRCheckedListBoxAlgorytm = new System.Windows.Forms.CheckedListBox();
             this.UNRBtnWynikiFormaTabelaryczna = new System.Windows.Forms.Button();
             this.UNRBtnWynikiFormaWykresu = new System.Windows.Forms.Button();
             this.UNRBtnResetuj = new System.Windows.Forms.Button();
             this.UNRBtnDemo = new System.Windows.Forms.Button();
             this.UNRBtnWizualizacjaTablicyPrzedSortowaniem = new System.Windows.Forms.Button();
             this.UNRBtnWizualizacjaTablicyPoSortowaniem = new System.Windows.Forms.Button();
+            this.UNRGrzebieniowe = new System.Windows.Forms.RadioButton();
+            this.UNRShell = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.UNRTBarZmieńGrubośćLinii)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +66,7 @@
             this.UNRBtnWybierzKolorLinii.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.UNRBtnWybierzKolorLinii.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.UNRBtnWybierzKolorLinii.Location = new System.Drawing.Point(55, 38);
-            this.UNRBtnWybierzKolorLinii.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UNRBtnWybierzKolorLinii.Margin = new System.Windows.Forms.Padding(4);
             this.UNRBtnWybierzKolorLinii.Name = "UNRBtnWybierzKolorLinii";
             this.UNRBtnWybierzKolorLinii.Size = new System.Drawing.Size(92, 65);
             this.UNRBtnWybierzKolorLinii.TabIndex = 0;
@@ -75,7 +76,7 @@
             // UNRBtnWybierzKolorTła
             // 
             this.UNRBtnWybierzKolorTła.Location = new System.Drawing.Point(344, 37);
-            this.UNRBtnWybierzKolorTła.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UNRBtnWybierzKolorTła.Margin = new System.Windows.Forms.Padding(4);
             this.UNRBtnWybierzKolorTła.Name = "UNRBtnWybierzKolorTła";
             this.UNRBtnWybierzKolorTła.Size = new System.Drawing.Size(122, 65);
             this.UNRBtnWybierzKolorTła.TabIndex = 1;
@@ -85,7 +86,7 @@
             // UNRTBoxWziernikKoloruLinii
             // 
             this.UNRTBoxWziernikKoloruLinii.Location = new System.Drawing.Point(192, 80);
-            this.UNRTBoxWziernikKoloruLinii.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UNRTBoxWziernikKoloruLinii.Margin = new System.Windows.Forms.Padding(4);
             this.UNRTBoxWziernikKoloruLinii.Name = "UNRTBoxWziernikKoloruLinii";
             this.UNRTBoxWziernikKoloruLinii.Size = new System.Drawing.Size(109, 20);
             this.UNRTBoxWziernikKoloruLinii.TabIndex = 2;
@@ -113,7 +114,7 @@
             // UNRTBoxWziernikKoloruTła
             // 
             this.UNRTBoxWziernikKoloruTła.Location = new System.Drawing.Point(526, 80);
-            this.UNRTBoxWziernikKoloruTła.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UNRTBoxWziernikKoloruTła.Margin = new System.Windows.Forms.Padding(4);
             this.UNRTBoxWziernikKoloruTła.Name = "UNRTBoxWziernikKoloruTła";
             this.UNRTBoxWziernikKoloruTła.Size = new System.Drawing.Size(112, 20);
             this.UNRTBoxWziernikKoloruTła.TabIndex = 5;
@@ -122,7 +123,7 @@
             // 
             this.UNRComboBoxUstalStylLiniiWykresu.FormattingEnabled = true;
             this.UNRComboBoxUstalStylLiniiWykresu.Location = new System.Drawing.Point(718, 80);
-            this.UNRComboBoxUstalStylLiniiWykresu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UNRComboBoxUstalStylLiniiWykresu.Margin = new System.Windows.Forms.Padding(4);
             this.UNRComboBoxUstalStylLiniiWykresu.Name = "UNRComboBoxUstalStylLiniiWykresu";
             this.UNRComboBoxUstalStylLiniiWykresu.Size = new System.Drawing.Size(140, 22);
             this.UNRComboBoxUstalStylLiniiWykresu.TabIndex = 6;
@@ -140,7 +141,7 @@
             // UNRTBarZmieńGrubośćLinii
             // 
             this.UNRTBarZmieńGrubośćLinii.Location = new System.Drawing.Point(1014, 80);
-            this.UNRTBarZmieńGrubośćLinii.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UNRTBarZmieńGrubośćLinii.Margin = new System.Windows.Forms.Padding(4);
             this.UNRTBarZmieńGrubośćLinii.Name = "UNRTBarZmieńGrubośćLinii";
             this.UNRTBarZmieńGrubośćLinii.Size = new System.Drawing.Size(122, 45);
             this.UNRTBarZmieńGrubośćLinii.TabIndex = 8;
@@ -159,7 +160,7 @@
             // UNRTBoxUstalonaGrubośćLiniiLiczbowo
             // 
             this.UNRTBoxUstalonaGrubośćLiniiLiczbowo.Location = new System.Drawing.Point(1014, 183);
-            this.UNRTBoxUstalonaGrubośćLiniiLiczbowo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UNRTBoxUstalonaGrubośćLiniiLiczbowo.Margin = new System.Windows.Forms.Padding(4);
             this.UNRTBoxUstalonaGrubośćLiniiLiczbowo.Name = "UNRTBoxUstalonaGrubośćLiniiLiczbowo";
             this.UNRTBoxUstalonaGrubośćLiniiLiczbowo.Size = new System.Drawing.Size(127, 20);
             this.UNRTBoxUstalonaGrubośćLiniiLiczbowo.TabIndex = 10;
@@ -195,18 +196,18 @@
             this.label7.Text = "Minimalna próba badawcza\r\n(liczba powtórzeń sortowania\r\ntablicy o tych samych roz" +
     "miarach";
             // 
-            // UNRTBoxMinimalnaPróba
+            // UNRTBoxMinimalnaProba
             // 
-            this.UNRTBoxMinimalnaPróba.Location = new System.Drawing.Point(59, 183);
-            this.UNRTBoxMinimalnaPróba.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.UNRTBoxMinimalnaPróba.Name = "UNRTBoxMinimalnaPróba";
-            this.UNRTBoxMinimalnaPróba.Size = new System.Drawing.Size(143, 20);
-            this.UNRTBoxMinimalnaPróba.TabIndex = 14;
+            this.UNRTBoxMinimalnaProba.Location = new System.Drawing.Point(59, 183);
+            this.UNRTBoxMinimalnaProba.Margin = new System.Windows.Forms.Padding(4);
+            this.UNRTBoxMinimalnaProba.Name = "UNRTBoxMinimalnaProba";
+            this.UNRTBoxMinimalnaProba.Size = new System.Drawing.Size(143, 20);
+            this.UNRTBoxMinimalnaProba.TabIndex = 14;
             // 
             // UNRTBoxMaxRozmiarTablic
             // 
             this.UNRTBoxMaxRozmiarTablic.Location = new System.Drawing.Point(59, 262);
-            this.UNRTBoxMaxRozmiarTablic.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UNRTBoxMaxRozmiarTablic.Margin = new System.Windows.Forms.Padding(4);
             this.UNRTBoxMaxRozmiarTablic.Name = "UNRTBoxMaxRozmiarTablic";
             this.UNRTBoxMaxRozmiarTablic.Size = new System.Drawing.Size(143, 20);
             this.UNRTBoxMaxRozmiarTablic.TabIndex = 15;
@@ -231,13 +232,13 @@
             this.label9.TabIndex = 17;
             this.label9.Text = "Dolna granica przedziału\r\n    wartości elementów \r\n     sortowanych tablic";
             // 
-            // UNRTBoxDowolnaGranicaPrzedziału
+            // UNRTBoxDolnaGranicaPrzedzialu
             // 
-            this.UNRTBoxDowolnaGranicaPrzedziału.Location = new System.Drawing.Point(59, 374);
-            this.UNRTBoxDowolnaGranicaPrzedziału.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.UNRTBoxDowolnaGranicaPrzedziału.Name = "UNRTBoxDowolnaGranicaPrzedziału";
-            this.UNRTBoxDowolnaGranicaPrzedziału.Size = new System.Drawing.Size(143, 20);
-            this.UNRTBoxDowolnaGranicaPrzedziału.TabIndex = 18;
+            this.UNRTBoxDolnaGranicaPrzedzialu.Location = new System.Drawing.Point(59, 374);
+            this.UNRTBoxDolnaGranicaPrzedzialu.Margin = new System.Windows.Forms.Padding(4);
+            this.UNRTBoxDolnaGranicaPrzedzialu.Name = "UNRTBoxDolnaGranicaPrzedzialu";
+            this.UNRTBoxDolnaGranicaPrzedzialu.Size = new System.Drawing.Size(143, 20);
+            this.UNRTBoxDolnaGranicaPrzedzialu.TabIndex = 18;
             // 
             // label10
             // 
@@ -249,13 +250,13 @@
             this.label10.TabIndex = 19;
             this.label10.Text = "Górna granica przedziału\r\n     wartości elementów \r\n     sortowanych tablicy";
             // 
-            // UNRTBoxGórnaGranicaPrzedziału
+            // UNRTBoxGornaGranicaPrzedzialu
             // 
-            this.UNRTBoxGórnaGranicaPrzedziału.Location = new System.Drawing.Point(55, 475);
-            this.UNRTBoxGórnaGranicaPrzedziału.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.UNRTBoxGórnaGranicaPrzedziału.Name = "UNRTBoxGórnaGranicaPrzedziału";
-            this.UNRTBoxGórnaGranicaPrzedziału.Size = new System.Drawing.Size(143, 20);
-            this.UNRTBoxGórnaGranicaPrzedziału.TabIndex = 20;
+            this.UNRTBoxGornaGranicaPrzedzialu.Location = new System.Drawing.Point(55, 475);
+            this.UNRTBoxGornaGranicaPrzedzialu.Margin = new System.Windows.Forms.Padding(4);
+            this.UNRTBoxGornaGranicaPrzedzialu.Name = "UNRTBoxGornaGranicaPrzedzialu";
+            this.UNRTBoxGornaGranicaPrzedzialu.Size = new System.Drawing.Size(143, 20);
+            this.UNRTBoxGornaGranicaPrzedzialu.TabIndex = 20;
             // 
             // label11
             // 
@@ -267,32 +268,17 @@
             this.label11.TabIndex = 21;
             this.label11.Text = "Wybierz algorytm do analizy";
             // 
-            // UNRCheckedListBoxAlgorytm
-            // 
-            this.UNRCheckedListBoxAlgorytm.FormattingEnabled = true;
-            this.UNRCheckedListBoxAlgorytm.Items.AddRange(new object[] {
-            "Prostego wybierania",
-            "Prostego wstawiania",
-            "............",
-            "..................",
-            "...................",
-            "..........."});
-            this.UNRCheckedListBoxAlgorytm.Location = new System.Drawing.Point(55, 545);
-            this.UNRCheckedListBoxAlgorytm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.UNRCheckedListBoxAlgorytm.Name = "UNRCheckedListBoxAlgorytm";
-            this.UNRCheckedListBoxAlgorytm.Size = new System.Drawing.Size(140, 94);
-            this.UNRCheckedListBoxAlgorytm.TabIndex = 23;
-            // 
             // UNRBtnWynikiFormaTabelaryczna
             // 
             this.UNRBtnWynikiFormaTabelaryczna.Font = new System.Drawing.Font("Georgia", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UNRBtnWynikiFormaTabelaryczna.Location = new System.Drawing.Point(966, 277);
-            this.UNRBtnWynikiFormaTabelaryczna.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UNRBtnWynikiFormaTabelaryczna.Margin = new System.Windows.Forms.Padding(4);
             this.UNRBtnWynikiFormaTabelaryczna.Name = "UNRBtnWynikiFormaTabelaryczna";
             this.UNRBtnWynikiFormaTabelaryczna.Size = new System.Drawing.Size(224, 77);
             this.UNRBtnWynikiFormaTabelaryczna.TabIndex = 24;
             this.UNRBtnWynikiFormaTabelaryczna.Text = "Wyniki analizy algorytmu sortowania w formie tabelarycznej";
             this.UNRBtnWynikiFormaTabelaryczna.UseVisualStyleBackColor = true;
+            this.UNRBtnWynikiFormaTabelaryczna.Click += new System.EventHandler(this.UNRBtnWynikiFormaTabelaryczna_Click);
             // 
             // UNRBtnWynikiFormaWykresu
             // 
@@ -344,27 +330,50 @@
             this.UNRBtnWizualizacjaTablicyPoSortowaniem.Text = "Wizualizacja tablicy po sortowaniu";
             this.UNRBtnWizualizacjaTablicyPoSortowaniem.UseVisualStyleBackColor = true;
             // 
+            // UNRGrzebieniowe
+            // 
+            this.UNRGrzebieniowe.AutoSize = true;
+            this.UNRGrzebieniowe.Location = new System.Drawing.Point(55, 545);
+            this.UNRGrzebieniowe.Name = "UNRGrzebieniowe";
+            this.UNRGrzebieniowe.Size = new System.Drawing.Size(170, 18);
+            this.UNRGrzebieniowe.TabIndex = 30;
+            this.UNRGrzebieniowe.TabStop = true;
+            this.UNRGrzebieniowe.Text = "Sortowanie Grzebieniowe";
+            this.UNRGrzebieniowe.UseVisualStyleBackColor = true;
+            // 
+            // UNRShell
+            // 
+            this.UNRShell.AutoSize = true;
+            this.UNRShell.Location = new System.Drawing.Point(55, 570);
+            this.UNRShell.Name = "UNRShell";
+            this.UNRShell.Size = new System.Drawing.Size(144, 18);
+            this.UNRShell.TabIndex = 31;
+            this.UNRShell.TabStop = true;
+            this.UNRShell.Text = "Sortowanie Shellsort";
+            this.UNRShell.UseVisualStyleBackColor = true;
+            // 
             // UNRGlowne
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(1278, 672);
+            this.Controls.Add(this.UNRShell);
+            this.Controls.Add(this.UNRGrzebieniowe);
             this.Controls.Add(this.UNRBtnWizualizacjaTablicyPoSortowaniem);
             this.Controls.Add(this.UNRBtnWizualizacjaTablicyPrzedSortowaniem);
             this.Controls.Add(this.UNRBtnDemo);
             this.Controls.Add(this.UNRBtnResetuj);
             this.Controls.Add(this.UNRBtnWynikiFormaWykresu);
             this.Controls.Add(this.UNRBtnWynikiFormaTabelaryczna);
-            this.Controls.Add(this.UNRCheckedListBoxAlgorytm);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.UNRTBoxGórnaGranicaPrzedziału);
+            this.Controls.Add(this.UNRTBoxGornaGranicaPrzedzialu);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.UNRTBoxDowolnaGranicaPrzedziału);
+            this.Controls.Add(this.UNRTBoxDolnaGranicaPrzedzialu);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.UNRTBoxMaxRozmiarTablic);
-            this.Controls.Add(this.UNRTBoxMinimalnaPróba);
+            this.Controls.Add(this.UNRTBoxMinimalnaProba);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -380,7 +389,7 @@
             this.Controls.Add(this.UNRBtnWybierzKolorTła);
             this.Controls.Add(this.UNRBtnWybierzKolorLinii);
             this.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UNRGlowne";
             this.Text = "Analizator algorytmów sortowania";
             ((System.ComponentModel.ISupportInitialize)(this.UNRTBarZmieńGrubośćLinii)).EndInit();
@@ -405,21 +414,22 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox UNRTBoxMinimalnaPróba;
+        private System.Windows.Forms.TextBox UNRTBoxMinimalnaProba;
         private System.Windows.Forms.TextBox UNRTBoxMaxRozmiarTablic;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox UNRTBoxDowolnaGranicaPrzedziału;
+        private System.Windows.Forms.TextBox UNRTBoxDolnaGranicaPrzedzialu;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox UNRTBoxGórnaGranicaPrzedziału;
+        private System.Windows.Forms.TextBox UNRTBoxGornaGranicaPrzedzialu;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.CheckedListBox UNRCheckedListBoxAlgorytm;
         private System.Windows.Forms.Button UNRBtnWynikiFormaTabelaryczna;
         private System.Windows.Forms.Button UNRBtnWynikiFormaWykresu;
         private System.Windows.Forms.Button UNRBtnResetuj;
         private System.Windows.Forms.Button UNRBtnDemo;
         private System.Windows.Forms.Button UNRBtnWizualizacjaTablicyPrzedSortowaniem;
         private System.Windows.Forms.Button UNRBtnWizualizacjaTablicyPoSortowaniem;
+        private System.Windows.Forms.RadioButton UNRGrzebieniowe;
+        private System.Windows.Forms.RadioButton UNRShell;
 
 
     }
