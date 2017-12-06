@@ -58,7 +58,9 @@
             this.UNRBtnWizualizacjaTablicyPoSortowaniem = new System.Windows.Forms.Button();
             this.UNRGrzebieniowe = new System.Windows.Forms.RadioButton();
             this.UNRShell = new System.Windows.Forms.RadioButton();
+            this.UNRDgvPrzedSortowaniem = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.UNRTBarZmieńGrubośćLinii)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNRDgvPrzedSortowaniem)).BeginInit();
             this.SuspendLayout();
             // 
             // UNRBtnWybierzKolorLinii
@@ -319,6 +321,7 @@
             this.UNRBtnWizualizacjaTablicyPrzedSortowaniem.TabIndex = 28;
             this.UNRBtnWizualizacjaTablicyPrzedSortowaniem.Text = "Wizualizacja tablicy przed sortowaniem";
             this.UNRBtnWizualizacjaTablicyPrzedSortowaniem.UseVisualStyleBackColor = true;
+            this.UNRBtnWizualizacjaTablicyPrzedSortowaniem.Click += new System.EventHandler(this.UNRBtnWizualizacjaTablicyPrzedSortowaniem_Click);
             // 
             // UNRBtnWizualizacjaTablicyPoSortowaniem
             // 
@@ -329,6 +332,7 @@
             this.UNRBtnWizualizacjaTablicyPoSortowaniem.TabIndex = 29;
             this.UNRBtnWizualizacjaTablicyPoSortowaniem.Text = "Wizualizacja tablicy po sortowaniu";
             this.UNRBtnWizualizacjaTablicyPoSortowaniem.UseVisualStyleBackColor = true;
+            this.UNRBtnWizualizacjaTablicyPoSortowaniem.Click += new System.EventHandler(this.UNRBtnWizualizacjaTablicyPoSortowaniem_Click);
             // 
             // UNRGrzebieniowe
             // 
@@ -352,12 +356,21 @@
             this.UNRShell.Text = "Sortowanie Shellsort";
             this.UNRShell.UseVisualStyleBackColor = true;
             // 
+            // UNRDgvPrzedSortowaniem
+            // 
+            this.UNRDgvPrzedSortowaniem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.UNRDgvPrzedSortowaniem.Location = new System.Drawing.Point(277, 118);
+            this.UNRDgvPrzedSortowaniem.Name = "UNRDgvPrzedSortowaniem";
+            this.UNRDgvPrzedSortowaniem.Size = new System.Drawing.Size(682, 405);
+            this.UNRDgvPrzedSortowaniem.TabIndex = 32;
+            // 
             // UNRGlowne
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(1278, 672);
+            this.Controls.Add(this.UNRDgvPrzedSortowaniem);
             this.Controls.Add(this.UNRShell);
             this.Controls.Add(this.UNRGrzebieniowe);
             this.Controls.Add(this.UNRBtnWizualizacjaTablicyPoSortowaniem);
@@ -393,6 +406,7 @@
             this.Name = "UNRGlowne";
             this.Text = "Analizator algorytmów sortowania";
             ((System.ComponentModel.ISupportInitialize)(this.UNRTBarZmieńGrubośćLinii)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNRDgvPrzedSortowaniem)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -430,6 +444,7 @@
         private System.Windows.Forms.Button UNRBtnWizualizacjaTablicyPoSortowaniem;
         private System.Windows.Forms.RadioButton UNRGrzebieniowe;
         private System.Windows.Forms.RadioButton UNRShell;
+        private System.Windows.Forms.DataGridView UNRDgvPrzedSortowaniem;
 
 
     }

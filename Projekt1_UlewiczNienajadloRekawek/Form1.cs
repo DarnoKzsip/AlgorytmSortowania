@@ -17,40 +17,64 @@ namespace Projekt1_UlewiczNienajadloRekawek
         Int32 UNRDolnaGranica;
         Int32 UNRGornaGranica;
         int UNRSeed = 0; // inicjator wartości Random(bez wstawiania tych samych wartości ze względu na Timestamp)
+        List<Int32> UNRTablicaSortowania = new List<Int32>();
         
         public UNRGlowne()
         {
             InitializeComponent();
+            UNRDgvPrzedSortowaniem.Visible = false;
            
 
         }
 
         private void UNRBtnWynikiFormaTabelaryczna_Click(object sender, EventArgs e)
         {
-            Int32.TryParse(UNRTBoxMinimalnaProba.Text, out UNRLiczbaPowtorzen); 
+            UNRLosowanie();
+            
+
+        }
+
+        private void UNRBtnWizualizacjaTablicyPrzedSortowaniem_Click(object sender, EventArgs e)
+        {
+                UNRLosowanie();
+
+                var UNRListToSee = new BindingList<Int32>(UNRTablicaSortowania);
+                DataTable table = ConvertListToDataTable(UNRTablicaSortowania);
+                UNRDgvPrzedSortowaniem.DataSource = table;
+                //UNRDgvPrzedSortowaniem.DataSource = UNRListToSee;
+                UNRDgvPrzedSortowaniem.Visible = true;
+           
+             
+        }
+
+        private void UNRLosowanie() {
+
+            Int32.TryParse(UNRTBoxMinimalnaProba.Text, out UNRLiczbaPowtorzen);
             Int32.TryParse(UNRTBoxMaxRozmiarTablic.Text, out UNRMaxRozmiarTablic);
             Int32.TryParse(UNRTBoxDolnaGranicaPrzedzialu.Text, out UNRDolnaGranica);
             Int32.TryParse(UNRTBoxGornaGranicaPrzedzialu.Text, out UNRGornaGranica);
-            
+
             //UNRLiczbaPowtorzen = Convert.ToInt32(UNRTBoxMinimalnaProba.Text);
             //UNRMaxRozmiarTablic = Convert.ToInt32(UNRTBoxMaxRozmiarTablic);
             //UNRDolnaGranica = Convert.ToInt32(UNRTBoxDowolnaGranicaPrzedzialu);
             //UNRGornaGranica = Convert.ToInt32(UNRTBoxGornaGranicaPrzedzialu);
 
-            List<Int32> UNRTablicaSortowania = new List<Int32>();
 
-            for (int i = 1; i < UNRMaxRozmiarTablic; i++) {
+
+            for (int i = 1; i < UNRMaxRozmiarTablic; i++)
+            {
 
                 Random UNRRandom = new Random(UNRSeed);
-                    UNRTablicaSortowania.Add(UNRRandom.Next(UNRDolnaGranica, UNRGornaGranica));
-                    UNRSeed++;
+                UNRTablicaSortowania.Add(UNRRandom.Next(UNRDolnaGranica, UNRGornaGranica));
+                UNRSeed++;
 
 
             }
 
             MessageBox.Show("OK");
 
-            if (UNRShell.Checked == true) {
+            if (UNRShell.Checked == true)
+            {
 
 
                 UNRShell Shell = new UNRShell(UNRTablicaSortowania);
@@ -60,10 +84,50 @@ namespace Projekt1_UlewiczNienajadloRekawek
             else if (UNRGrzebieniowe.Checked == true)
             {
 
-                UNRGrzebieniowe Shell = new UNRGrzebieniowe(UNRTablicaSortowania);
+                UNRGrzebieniowe Grzebieniowe = new UNRGrzebieniowe(UNRTablicaSortowania);
 
             };
-
+        
+        
         }
+
+        
+        //TODO: Zmienić nazwy zmiennych w funkcji conversji Listy na tablicę do zasilania DGV 
+        
+          
+         DataTable ConvertListToDataTable(List<Int32> list)
+        {
+            // New table.
+            DataTable table = new DataTable();
+
+
+            table.Columns.Add("Pozycja");
+            table.Columns.Add("Przed Losowaniem");
+
+            //// Add columns.
+            //for (int i = 0; i < 2; i++)
+            //{
+
+            //    table.Columns.Add();
+
+            //}
+
+            
+            int n = 0;
+            // Add rows.
+            foreach (var array in list)
+            {
+                //table.Rows.Add(n);
+                table.Rows.Add(n,array);
+                n++;
+            }
+
+            return table;
+        }
+
+         private void UNRBtnWizualizacjaTablicyPoSortowaniem_Click(object sender, EventArgs e)
+         {
+
+         }
     }
 }
