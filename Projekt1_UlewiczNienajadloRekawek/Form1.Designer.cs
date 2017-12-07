@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UNRGlowne));
             this.UNRBtnWybierzKolorLinii = new System.Windows.Forms.Button();
             this.UNRBtnWybierzKolorTła = new System.Windows.Forms.Button();
             this.UNRTBoxWziernikKoloruLinii = new System.Windows.Forms.TextBox();
@@ -59,8 +60,12 @@
             this.UNRGrzebieniowe = new System.Windows.Forms.RadioButton();
             this.UNRShell = new System.Windows.Forms.RadioButton();
             this.UNRDgvPrzedSortowaniem = new System.Windows.Forms.DataGridView();
+            this.UNRDgvPoSortowaniu = new System.Windows.Forms.DataGridView();
+            this.UNRPBsalsa = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.UNRTBarZmieńGrubośćLinii)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UNRDgvPrzedSortowaniem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNRDgvPoSortowaniu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNRPBsalsa)).BeginInit();
             this.SuspendLayout();
             // 
             // UNRBtnWybierzKolorLinii
@@ -364,12 +369,31 @@
             this.UNRDgvPrzedSortowaniem.Size = new System.Drawing.Size(682, 405);
             this.UNRDgvPrzedSortowaniem.TabIndex = 32;
             // 
+            // UNRDgvPoSortowaniu
+            // 
+            this.UNRDgvPoSortowaniu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.UNRDgvPoSortowaniu.Location = new System.Drawing.Point(277, 118);
+            this.UNRDgvPoSortowaniu.Name = "UNRDgvPoSortowaniu";
+            this.UNRDgvPoSortowaniu.Size = new System.Drawing.Size(682, 405);
+            this.UNRDgvPoSortowaniu.TabIndex = 33;
+            // 
+            // UNRPBsalsa
+            // 
+            this.UNRPBsalsa.Image = ((System.Drawing.Image)(resources.GetObject("UNRPBsalsa.Image")));
+            this.UNRPBsalsa.Location = new System.Drawing.Point(419, 162);
+            this.UNRPBsalsa.Name = "UNRPBsalsa";
+            this.UNRPBsalsa.Size = new System.Drawing.Size(426, 296);
+            this.UNRPBsalsa.TabIndex = 34;
+            this.UNRPBsalsa.TabStop = false;
+            // 
             // UNRGlowne
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(1278, 672);
+            this.Controls.Add(this.UNRPBsalsa);
+            this.Controls.Add(this.UNRDgvPoSortowaniu);
             this.Controls.Add(this.UNRDgvPrzedSortowaniem);
             this.Controls.Add(this.UNRShell);
             this.Controls.Add(this.UNRGrzebieniowe);
@@ -407,6 +431,8 @@
             this.Text = "Analizator algorytmów sortowania";
             ((System.ComponentModel.ISupportInitialize)(this.UNRTBarZmieńGrubośćLinii)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UNRDgvPrzedSortowaniem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNRDgvPoSortowaniu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNRPBsalsa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -445,6 +471,8 @@
         private System.Windows.Forms.RadioButton UNRGrzebieniowe;
         private System.Windows.Forms.RadioButton UNRShell;
         private System.Windows.Forms.DataGridView UNRDgvPrzedSortowaniem;
+        private System.Windows.Forms.DataGridView UNRDgvPoSortowaniu;
+        private System.Windows.Forms.PictureBox UNRPBsalsa;
 
 
     }

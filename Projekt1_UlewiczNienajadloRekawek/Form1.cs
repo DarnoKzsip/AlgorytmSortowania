@@ -18,11 +18,13 @@ namespace Projekt1_UlewiczNienajadloRekawek
         Int32 UNRGornaGranica;
         int UNRSeed = 0; // inicjator wartości Random(bez wstawiania tych samych wartości ze względu na Timestamp)
         List<Int32> UNRTablicaSortowania = new List<Int32>();
+        List<Int32> UNRTablicaPoSortowaniu = new List<Int32>();
         
         public UNRGlowne()
         {
             InitializeComponent();
             UNRDgvPrzedSortowaniem.Visible = false;
+            UNRDgvPoSortowaniu.Visible = false;
            
 
         }
@@ -43,6 +45,7 @@ namespace Projekt1_UlewiczNienajadloRekawek
                 UNRDgvPrzedSortowaniem.DataSource = table;
                 //UNRDgvPrzedSortowaniem.DataSource = UNRListToSee;
                 UNRDgvPrzedSortowaniem.Visible = true;
+                UNRPBsalsa.Visible = false;
            
              
         }
@@ -71,7 +74,7 @@ namespace Projekt1_UlewiczNienajadloRekawek
 
             }
 
-            MessageBox.Show("OK");
+            //MessageBox.Show("OK");
 
             if (UNRShell.Checked == true)
             {
@@ -127,6 +130,34 @@ namespace Projekt1_UlewiczNienajadloRekawek
 
          private void UNRBtnWizualizacjaTablicyPoSortowaniem_Click(object sender, EventArgs e)
          {
+             if (UNRShell.Checked == true)
+             {
+
+
+                 UNRShell Shell = new UNRShell(UNRTablicaSortowania);
+                 UNRDgvPrzedSortowaniem.Visible = false;
+                 UNRTablicaPoSortowaniu = Shell.Sortuj();
+                 var UNRListToSee = new BindingList<Int32>(UNRTablicaPoSortowaniu);
+                 DataTable table = ConvertListToDataTable(UNRTablicaPoSortowaniu);
+                 UNRDgvPoSortowaniu.DataSource = table;
+                 UNRDgvPoSortowaniu.Visible = true;
+                 UNRPBsalsa.Visible = false;
+
+
+             }
+
+             else if (UNRGrzebieniowe.Checked == true)
+             {
+
+                 UNRGrzebieniowe Grzebieniowe = new UNRGrzebieniowe(UNRTablicaSortowania);
+                 UNRDgvPrzedSortowaniem.Visible = false;
+                 UNRTablicaPoSortowaniu = Grzebieniowe.Sortuj();
+                 var UNRListToSee = new BindingList<Int32>(UNRTablicaPoSortowaniu);
+                 DataTable table = ConvertListToDataTable(UNRTablicaPoSortowaniu);
+                 UNRDgvPoSortowaniu.DataSource = table;
+                 UNRDgvPoSortowaniu.Visible = true;
+                 UNRPBsalsa.Visible = false;
+             };
 
          }
     }
