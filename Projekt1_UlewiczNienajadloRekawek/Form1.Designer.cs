@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UNRGlowne));
             this.UNRBtnWybierzKolorLinii = new System.Windows.Forms.Button();
             this.UNRBtnWybierzKolorTła = new System.Windows.Forms.Button();
@@ -62,10 +63,12 @@
             this.UNRDgvPrzedSortowaniem = new System.Windows.Forms.DataGridView();
             this.UNRDgvPoSortowaniu = new System.Windows.Forms.DataGridView();
             this.UNRPBsalsa = new System.Windows.Forms.PictureBox();
+            this.UNREPCheck = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.UNRTBarZmieńGrubośćLinii)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UNRDgvPrzedSortowaniem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UNRDgvPoSortowaniu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UNRPBsalsa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNREPCheck)).BeginInit();
             this.SuspendLayout();
             // 
             // UNRBtnWybierzKolorLinii
@@ -386,6 +389,10 @@
             this.UNRPBsalsa.TabIndex = 34;
             this.UNRPBsalsa.TabStop = false;
             // 
+            // UNREPCheck
+            // 
+            this.UNREPCheck.ContainerControl = this;
+            // 
             // UNRGlowne
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -433,6 +440,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.UNRDgvPrzedSortowaniem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UNRDgvPoSortowaniu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UNRPBsalsa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNREPCheck)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -473,6 +481,7 @@
         private System.Windows.Forms.DataGridView UNRDgvPrzedSortowaniem;
         private System.Windows.Forms.DataGridView UNRDgvPoSortowaniu;
         private System.Windows.Forms.PictureBox UNRPBsalsa;
+        private System.Windows.Forms.ErrorProvider UNREPCheck;
 
 
     }

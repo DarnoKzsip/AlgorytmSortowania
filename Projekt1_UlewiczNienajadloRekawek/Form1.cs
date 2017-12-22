@@ -19,6 +19,7 @@ namespace Projekt1_UlewiczNienajadloRekawek
         int UNRSeed = 0; // inicjator wartości Random(bez wstawiania tych samych wartości ze względu na Timestamp)
         List<UNRListaPo> UNRTablicaSortowania = new List<UNRListaPo>();
         List<UNRListaPo> UNRTablicaPoSortowaniu = new List<UNRListaPo>();
+        
 
         
         public UNRGlowne()
@@ -28,6 +29,27 @@ namespace Projekt1_UlewiczNienajadloRekawek
             UNRDgvPoSortowaniu.Visible = false;
            
 
+        }
+
+        public bool UNREPCheckLiczbaProb { 
+        
+           
+           if (UNRTBoxMinimalnaProba.Text = "")
+           {
+
+               UNRTBoxMinimalnaProba.SetError(Tb_Imie, "Podaj liczbę prób");
+               return false;
+
+           }
+
+           else
+           {
+
+               EP_Error.Dispose();
+
+           }
+        
+            return true;
         }
 
         private void UNRBtnWynikiFormaTabelaryczna_Click(object sender, EventArgs e)
