@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,25 +8,23 @@ namespace Projekt1_UlewiczNienajadloRekawek
 {
     class UNRGrzebieniowe
     {
-        List<UNRListaPo> UNRTablicaPrzedSortowaniem;
-        List<UNRListaPo> UNRTablicaPoSortowaniu;
-        //double UNRgap;
-        Stopwatch watch = new Stopwatch();
+        List<int> UNRTablicaPrzedSortowaniem;
+        List<int> UNRTablicaPoSortowaniu;
+        double UNRgap;
 
-        public UNRGrzebieniowe(List<UNRListaPo> UNRTablicaPrzedSortowaniem)
+        public UNRGrzebieniowe(List<int> UNRTablicaPrzedSortowaniem)
         {
 
             this.UNRTablicaPrzedSortowaniem = UNRTablicaPrzedSortowaniem;
 
         }
 
-        internal List<UNRListaPo> Sortuj()
+        internal List<int> Sortuj()
         {
 
             double UNRgap = UNRTablicaPrzedSortowaniem.Count;
             bool UNRswaps = true;
 
-            watch.Start();
             while (UNRgap > 1 || UNRswaps)
             {
                 UNRgap /= 1.247330950103979;
@@ -39,29 +36,23 @@ namespace Projekt1_UlewiczNienajadloRekawek
                 {
 
                     int UNRigap = UNRi + (int)UNRgap;
-                    if (UNRTablicaPrzedSortowaniem[UNRi].UNRElement < UNRTablicaPrzedSortowaniem[UNRigap].UNRElement) //(UNRTablicaPrzedSortowaniem[UNRi] > UNRTablicaPrzedSortowaniem[UNRigap])
+                    if (UNRTablicaPrzedSortowaniem[UNRi] < UNRTablicaPrzedSortowaniem[UNRigap]) //(UNRTablicaPrzedSortowaniem[UNRi] > UNRTablicaPrzedSortowaniem[UNRigap])
                     {
 
-                        int URNtmp = UNRTablicaPrzedSortowaniem[UNRi].UNRElement;
-                        UNRTablicaPrzedSortowaniem[UNRi].UNRElement = UNRTablicaPrzedSortowaniem[UNRigap].UNRElement;
-                        UNRTablicaPrzedSortowaniem[UNRigap].UNRElement = URNtmp;
+                        int URNtmp = UNRTablicaPrzedSortowaniem[UNRi];
+                        UNRTablicaPrzedSortowaniem[UNRi] = UNRTablicaPrzedSortowaniem[UNRigap];
+                        UNRTablicaPrzedSortowaniem[UNRigap] = URNtmp;
                         UNRswaps = true;
-                        UNRTablicaPrzedSortowaniem[UNRi].UNRCzas = Convert.ToInt32(watch.ElapsedTicks);
 
                     }
-                   // UNRTablicaPrzedSortowaniem[UNRi].UNRCzas = Convert.ToInt32(watch.ElapsedMilliseconds);
                     UNRi++;
 
-
+                    
 
                 }
 
-                
+                this.UNRTablicaPoSortowaniu = UNRTablicaPrzedSortowaniem;
             }
-            this.UNRTablicaPoSortowaniu = UNRTablicaPrzedSortowaniem;
-            watch.Stop();
-            watch.Reset();
-
             return this.UNRTablicaPoSortowaniu;
         }
     }
