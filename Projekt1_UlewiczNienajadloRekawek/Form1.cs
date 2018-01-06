@@ -60,13 +60,13 @@ namespace Projekt1_UlewiczNienajadloRekawek
             Int32.TryParse(UNRTBoxGornaGranicaPrzedzialu.Text, out UNRGornaGranica);
 
             UNRLiczbaPowtorzen = Convert.ToInt32(UNRTBoxMinimalnaProba.Text);
-            UNRMaxRozmiarTablic = Convert.ToInt32(UNRTBoxMaxRozmiarTablic);
-            UNRDolnaGranica = Convert.ToInt32(UNRTBoxDolnaGranicaPrzedzialu);
-            UNRGornaGranica = Convert.ToInt32(UNRTBoxGornaGranicaPrzedzialu);
+            //UNRMaxRozmiarTablic = Convert.ToInt32(UNRTBoxMaxRozmiarTablic);
+            //UNRDolnaGranica = Convert.ToInt32(UNRTBoxDolnaGranicaPrzedzialu);
+            //UNRGornaGranica = Convert.ToInt32(UNRTBoxGornaGranicaPrzedzialu);
 
 
 
-            for (int i = 1; i < UNRMaxRozmiarTablic; i++)
+            for (int i = 0; i < UNRMaxRozmiarTablic; i++)
             {
 
                 Random UNRRandom = new Random(UNRSeed);
