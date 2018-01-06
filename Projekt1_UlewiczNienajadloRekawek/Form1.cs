@@ -302,6 +302,17 @@ namespace Projekt1_UlewiczNienajadloRekawek
         {
             KR_Zmien_Styl_linii();
         }
+
+        private void UNRBtnResetuj_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UNRBtnDemo_Click(object sender, EventArgs e)
+        {
+            UNRShellDemo UNRShellDemo = new Projekt1_UlewiczNienajadloRekawek.UNRShellDemo();
+            UNRShellDemo.Show();
+        }
          }
 
         

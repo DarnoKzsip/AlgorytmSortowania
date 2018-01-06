@@ -28,3 +28,4 @@ E:\Projekty\Z pracy\Projekt1_UlewiczNienajadloRekawek-master\Projekt1_UlewiczNie
 E:\Projekty\Z pracy\Projekt1_UlewiczNienajadloRekawek-master\Projekt1_UlewiczNienajadloRekawek\obj\Debug\Projekt1_UlewiczNienajadloRekawek.UNRGlowne.resources
 E:\Projekty\Z pracy\Projekt1_UlewiczNienajadloRekawek-master\Projekt1_UlewiczNienajadloRekawek\obj\Debug\Projekt1_UlewiczNienajadloRekawek.Properties.Resources.resources
 E:\Projekty\Z pracy\Projekt1_UlewiczNienajadloRekawek-master\Projekt1_UlewiczNienajadloRekawek\obj\Debug\Projekt1_UlewiczNienajadloRekawek.csproj.GenerateResource.Cache
+E:\Projekty\C#\Projekt1\Projekt1_UlewiczNienajadloRekawek\Projekt1_UlewiczNienajadloRekawek\obj\Debug\Projekt1_UlewiczNienajadloRekawek.UNRShellDemo.resources

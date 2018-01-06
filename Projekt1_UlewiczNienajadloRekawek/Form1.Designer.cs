@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.UNRBtnWybierzKolorLinii = new System.Windows.Forms.Button();
             this.UNRBtnWybierzKolorTła = new System.Windows.Forms.Button();
             this.UNRTBoxWziernikKoloruLinii = new System.Windows.Forms.TextBox();
@@ -328,6 +328,7 @@
             this.UNRBtnResetuj.TabIndex = 26;
             this.UNRBtnResetuj.Text = "Resetuj \r\n(ustaw stan)";
             this.UNRBtnResetuj.UseVisualStyleBackColor = true;
+            this.UNRBtnResetuj.Click += new System.EventHandler(this.UNRBtnResetuj_Click);
             // 
             // UNRBtnDemo
             // 
@@ -338,6 +339,7 @@
             this.UNRBtnDemo.TabIndex = 27;
             this.UNRBtnDemo.Text = "DEMO \r\n(działanie algorytmu)";
             this.UNRBtnDemo.UseVisualStyleBackColor = true;
+            this.UNRBtnDemo.Click += new System.EventHandler(this.UNRBtnDemo_Click);
             // 
             // UNRBtnWizualizacjaTablicyPrzedSortowaniem
             // 
@@ -401,16 +403,16 @@
             // 
             // UNRChart
             // 
-            chartArea6.Name = "ChartArea1";
-            this.UNRChart.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.UNRChart.Legends.Add(legend6);
+            chartArea2.Name = "ChartArea1";
+            this.UNRChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.UNRChart.Legends.Add(legend2);
             this.UNRChart.Location = new System.Drawing.Point(277, 118);
             this.UNRChart.Name = "UNRChart";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.UNRChart.Series.Add(series6);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.UNRChart.Series.Add(series2);
             this.UNRChart.Size = new System.Drawing.Size(682, 405);
             this.UNRChart.TabIndex = 34;
             this.UNRChart.Text = "chart1";

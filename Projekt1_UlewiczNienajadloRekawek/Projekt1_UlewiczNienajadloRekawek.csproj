@@ -57,6 +57,12 @@
     <Compile Include="UNRGrzebieniowe.cs" />
     <Compile Include="UNRRandomArray.cs" />
     <Compile Include="UNRShell.cs" />
+    <Compile Include="UNRShellDemo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UNRShellDemo.Designer.cs">
+      <DependentUpon>UNRShellDemo.cs</DependentUpon>
+    </Compile>
     <Compile Include="UNRUtils.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -70,6 +76,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UNRShellDemo.resx">
+      <DependentUpon>UNRShellDemo.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
