@@ -9,22 +9,22 @@ namespace Projekt1_UlewiczNienajadloRekawek
     class UNRCzasy
     {
         int UNRrozmiar;
-        int UNRczaspomiar;
+        long UNRczaspomiar;
         int UNRczasobliczony;
 
         public UNRCzasy() { 
         
         }
 
-        void UNRUstawRozmiar(int UNRrozmiartablicy) {
+        public int UNRUstawRozmiar(int UNRrozmiartablicy) {
 
-            this.UNRrozmiar = UNRrozmiartablicy; 
+            return this.UNRrozmiar = UNRrozmiartablicy; 
 
         }
 
-        void UNRUstawCzasPomiaru(int UNRCzasPomiar) {
+        public long UNRUstawCzasPomiaru(long UNRCzasPomiar) {
 
-            this.UNRczaspomiar = UNRCzasPomiar;
+            return this.UNRczaspomiar = UNRCzasPomiar;
         
         }
 

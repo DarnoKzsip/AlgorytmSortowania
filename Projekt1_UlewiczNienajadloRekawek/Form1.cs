@@ -20,6 +20,7 @@ namespace Projekt1_UlewiczNienajadloRekawek
         //int UNRSeed = 0; // inicjator wartości Random(bez wstawiania tych samych wartości ze względu na Timestamp)
         List<Int32> UNRTablicaSortowania = new List<Int32>();
         List<Int32> UNRTablicaPoSortowaniu = new List<Int32>();
+        List<UNRCzasy> UNRTablicaPomiarowa = new List<UNRCzasy>();
         Stopwatch watch = new Stopwatch();
         
         public UNRGlowne()
@@ -33,8 +34,35 @@ namespace Projekt1_UlewiczNienajadloRekawek
 
         private void UNRBtnWynikiFormaTabelaryczna_Click(object sender, EventArgs e)
         {
-
+            UNRConversionTB();
             UNRLosowanie();
+            for (int UNRAktRozmiar = 0; UNRAktRozmiar < UNRMaxRozmiarTablic; UNRAktRozmiar++) //generowanie aktualnego rozmiaru tablicy
+            {
+
+                for (int UNRProba = 0; UNRProba < UNRLiczbaPowtorzen; UNRProba++) {         //generowanie liczby tablic o danym rozmiarze
+
+                    UNRUtils.UNRLosowanie(UNRDolnaGranica, UNRGornaGranica, UNRAktRozmiar, UNRTablicaSortowania);
+                    UNRShell Shell = new UNRShell(UNRTablicaSortowania);
+                    UNRCzasy czas_sortowania = new UNRCzasy();
+                    UNRDgvPrzedSortowaniem.Visible = false;
+                    watch.Reset();
+                    watch.Start();
+                    UNRTablicaPoSortowaniu = Shell.Sortuj();
+                    watch.Stop();
+                    czas_sortowania.UNRUstawRozmiar(UNRAktRozmiar);
+                    czas_sortowania.UNRUstawCzasPomiaru(watch.ElapsedTicks);
+                    UNRTablicaPomiarowa.Add(czas_sortowania);
+                    //var UNRListToSee = new BindingList<Int32>(UNRTablicaPoSortowaniu);
+                    //DataTable table = UNRUtils.UNRConvertListToDataTable(UNRTablicaPoSortowaniu);
+                    //UNRDgvPoSortowaniu.DataSource = table;
+                    //UNRDgvPoSortowaniu.Visible = true;
+                
+                }
+
+            }
+
+            MessageBox.Show("ok");
+                
 
             //if (UNRShell.Checked == true)
             //{
