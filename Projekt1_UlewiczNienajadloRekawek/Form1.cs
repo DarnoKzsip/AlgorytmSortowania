@@ -19,7 +19,6 @@ namespace Projekt1_UlewiczNienajadloRekawek
         Int32 UNRDolnaGranica;
         Int32 UNRGornaGranica;
         bool UNRFlagaPrzycisku = false; //Znacznik naciśnięcia tablicy w formie tabelarycznej
-        //int UNRSeed = 0; // inicjator wartości Random(bez wstawiania tych samych wartości ze względu na Timestamp)
         List<Int32> UNRTablicaSortowania = new List<Int32>();
         List<Int32> UNRTablicaPoSortowaniu = new List<Int32>();
         List<UNRCzasy> UNRTablicaPomiarowa = new List<UNRCzasy>();
@@ -33,6 +32,7 @@ namespace Projekt1_UlewiczNienajadloRekawek
             UNRDgvPoSortowaniu.Visible = false;
             UNRDgvPrzedSortowaniem.Visible = false;
             UNRChart.Visible = false;
+            KR_Zmien_Styl_linii();
            
 
         }
@@ -81,7 +81,6 @@ namespace Projekt1_UlewiczNienajadloRekawek
 
             }
 
-           // UNRCzasy UNRCzasy_ostateczne = new UNRCzasy();
 
             for (int UNRi = 1; UNRi < UNRTablicaPomiarowa.Count; UNRi++)
             {
@@ -105,33 +104,12 @@ namespace Projekt1_UlewiczNienajadloRekawek
                 }
             }
 
-
-
-            //var UNRListToSee = new BindingList<Int32>(UNRTablicaOstateczna);
             UNRtable = UNRUtils.UNRConvertListToDataTableCzasy(UNRTablicaOstateczna);
             UNRDgvPoSortowaniu.DataSource = UNRtable;
             UNRDgvPoSortowaniu.Visible = true;
 
             UNRFlagaPrzycisku = true;
-                //MessageBox.Show("ok");
-                
-
-            //if (UNRShell.Checked == true)
-            //{
-
-
-            //    UNRShell Shell = new UNRShell(UNRTablicaSortowania);
-            //    UNRDgvPrzedSortowaniem.Visible = false;
-            //    watch.Start();
-            //    UNRTablicaPoSortowaniu = Shell.Sortuj();
-            //    watch.Stop();
-            //    var UNRListToSee = new BindingList<Int32>(UNRTablicaPoSortowaniu);
-            //    DataTable table = UNRUtils.UNRConvertListToDataTable(UNRTablicaPoSortowaniu);
-            //    UNRDgvPoSortowaniu.DataSource = table;
-            //    UNRDgvPoSortowaniu.Visible = true;
-
-
-            //}
+            
             
 
         }
@@ -161,10 +139,29 @@ namespace Projekt1_UlewiczNienajadloRekawek
             UNRChart.Series[0].ChartType = SeriesChartType.Line;
             UNRChart.Series[0].BorderDashStyle = ChartDashStyle.Solid;
             UNRChart.Titles.Add("Wykres pomiaru");
-            //UNRChart.BackColor = white; //Ustalenie tła wykresu
+            UNRChart.BackColor = UNRTBoxWziernikKoloruTla.BackColor; //Ustalenie tła wykresu
             UNRChart.Series[0].Name = "Pomiar pomierzony";  //Ustalenie nazwy dla wykresu
-            //UNRChart.Series[0].Color = KR_LB_Kolor_linii.BackColor; //Ustalenie koloru linii
-            //KR_chart_Graficzna_prezentacja.Series[0].BorderWidth = Convert.ToInt16(KR_NUD_Grubosc.Value);
+            UNRChart.Series[0].Color = UNRTBoxWziernikKoloruLinii.BackColor; //Ustalenie koloru linii
+            UNRChart.Series[0].BorderWidth = Convert.ToInt16(UNRTBoxUstalonaGrubośćLiniiLiczbowo.Text);
+
+            switch (UNRComboBoxUstalStylLiniiWykresu.SelectedIndex) //Wybór stylu linii ze zdefiniowanych wzorców
+            {
+                case 0: UNRChart.Series[0].BorderDashStyle = ChartDashStyle.Solid;
+                    break;
+                case 1: UNRChart.Series[0].BorderDashStyle = ChartDashStyle.Dash;
+                    break;
+                case 2: UNRChart.Series[0].BorderDashStyle = ChartDashStyle.Dot;
+                    break;
+                case 3: UNRChart.Series[0].BorderDashStyle = ChartDashStyle.DashDot;
+                    break;
+                case 4: UNRChart.Series[0].BorderDashStyle = ChartDashStyle.DashDotDot;
+                    break;
+                case 5: UNRChart.Series[0].BorderDashStyle = ChartDashStyle.Solid;
+                    break;
+                default: UNRChart.Series[0].BorderDashStyle = ChartDashStyle.Solid;
+                    break;
+            }
+
             UNRChart.Series[0].Points.DataBindXY(UNRWykresWielkosci, UNRWykresPomiaru);
             MessageBox.Show("ok");
         }
@@ -173,12 +170,9 @@ namespace Projekt1_UlewiczNienajadloRekawek
         {
                 
                 UNRLosowanie();
-               // UNRRandomArray UNR_PokazTablice = new UNRRandomArray(Int32.TryParse(UNRTBoxDolnaGranicaPrzedzialu.Text, out UNRDolnaGranica))
-                //UNRTablicaSortowania
                 var UNRListToSee = new BindingList<Int32>(UNRTablicaSortowania);
                 DataTable table = UNRUtils.UNRConvertListToDataTable(UNRTablicaSortowania);
                 UNRDgvPrzedSortowaniem.DataSource = table;
-                //UNRDgvPrzedSortowaniem.DataSource = UNRListToSee;
                 UNRDgvPrzedSortowaniem.Visible = true;
            
              
@@ -187,30 +181,10 @@ namespace Projekt1_UlewiczNienajadloRekawek
         private void UNRLosowanie() {
 
             UNRConversionTB();
-            //Int32.TryParse(UNRTBoxMinimalnaProba.Text, out UNRLiczbaPowtorzen);
-            //Int32.TryParse(UNRTBoxMaxRozmiarTablic.Text, out UNRMaxRozmiarTablic);
-            //Int32.TryParse(UNRTBoxDolnaGranicaPrzedzialu.Text, out UNRDolnaGranica);
-            //Int32.TryParse(UNRTBoxGornaGranicaPrzedzialu.Text, out UNRGornaGranica);
-
             //Utwórz losową tablicę
             UNRTablicaSortowania = UNRUtils.UNRLosowanie(UNRDolnaGranica, UNRGornaGranica, UNRMaxRozmiarTablic, UNRTablicaSortowania);
 
-            //Wybierz rodzaj obiektu jakim ma być losowana tablica
-            //if (UNRShell.Checked == true)
-            //{
-
-
-            //    UNRShell Shell = new UNRShell(UNRTablicaSortowania);
-
-            //}
-
-            //else if (UNRGrzebieniowe.Checked == true)
-            //{
-
-            //    UNRGrzebieniowe Grzebieniowe = new UNRGrzebieniowe(UNRTablicaSortowania);
-
-            //};
-        
+     
         
         }
 
@@ -258,6 +232,77 @@ namespace Projekt1_UlewiczNienajadloRekawek
              return true;
          }
 
+        void KR_Zmien_Styl_linii()
+        {
+
+            UNRPanPodgladWykresu.Controls.Clear();
+            Graphics UNRg = UNRPanPodgladWykresu.CreateGraphics();
+
+            Pen UNRMyPen = new Pen(UNRTBoxWziernikKoloruLinii.BackColor, Convert.ToSingle(UNRTBarZmieńGrubośćLinii.Value));
+            switch (UNRComboBoxUstalStylLiniiWykresu.SelectedIndex)
+            {
+                case 1: UNRMyPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+                    break;
+                case 2: UNRMyPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
+                    break;
+                case 3: UNRMyPen.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+                    break;
+                case 4: UNRMyPen.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
+                    break;
+                case 5: UNRMyPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+                    break;
+                default: UNRMyPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+                    break;
+            }
+            UNRg.Clear(UNRTBoxWziernikKoloruTla.BackColor);
+            Pen KR_Black_Pen = new Pen(Color.Black, 1);
+            Rectangle KR_rect = new Rectangle(0, 10, 100, 20);
+            UNRg.DrawRectangle(KR_Black_Pen, KR_rect);
+            SolidBrush KR_solid = new SolidBrush(Color.White);
+            UNRg.FillRectangle(KR_solid, KR_rect);
+            UNRg.DrawLine(UNRMyPen, 0, 20, 100, 20);
+        
+        }
+
+         private void UNRBtnWybierzKolorLinii_Click(object sender, EventArgs e)
+         {
+              ColorDialog UNRokienkoKoloru = new ColorDialog();
+            if (UNRokienkoKoloru.ShowDialog() == DialogResult.OK)
+            {
+                UNRTBoxWziernikKoloruLinii.BackColor = UNRokienkoKoloru.Color;
+            }
+
+            KR_Zmien_Styl_linii();
+        }
+
+        private void UNRBtnWybierzKolorTła_Click(object sender, EventArgs e)
+        {
+         ColorDialog UNRokienkoKoloru = new ColorDialog();
+            if (UNRokienkoKoloru.ShowDialog() == DialogResult.OK)
+            {
+                UNRTBoxWziernikKoloruTla.BackColor = UNRokienkoKoloru.Color;
+            }
+
+            KR_Zmien_Styl_linii();
+        }
+
+        private void UNRTBarZmieńGrubośćLinii_Scroll(object sender, EventArgs e)
+        {
+            UNRTBoxUstalonaGrubośćLiniiLiczbowo.Text = Convert.ToString(UNRTBarZmieńGrubośćLinii.Value);
+            KR_Zmien_Styl_linii();
+        }
+
+        private void UNRTBoxUstalonaGrubośćLiniiLiczbowo_TextChanged(object sender, EventArgs e)
+        {
+            UNRTBarZmieńGrubośćLinii.Value = Convert.ToInt16(UNRTBoxUstalonaGrubośćLiniiLiczbowo.Text);
+            KR_Zmien_Styl_linii();
+        }
+
+        private void UNRComboBoxUstalStylLiniiWykresu_SelectedValueChanged(object sender, EventArgs e)
+        {
+            KR_Zmien_Styl_linii();
+        }
+         }
+
         
     }
-}

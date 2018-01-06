@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.UNRBtnWybierzKolorLinii = new System.Windows.Forms.Button();
             this.UNRBtnWybierzKolorTła = new System.Windows.Forms.Button();
             this.UNRTBoxWziernikKoloruLinii = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.UNRTBoxWziernikKoloruTła = new System.Windows.Forms.TextBox();
+            this.UNRTBoxWziernikKoloruTla = new System.Windows.Forms.TextBox();
             this.UNRComboBoxUstalStylLiniiWykresu = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.UNRTBarZmieńGrubośćLinii = new System.Windows.Forms.TrackBar();
@@ -64,6 +64,7 @@
             this.UNRDgvPrzedSortowaniem = new System.Windows.Forms.DataGridView();
             this.UNRDgvPoSortowaniu = new System.Windows.Forms.DataGridView();
             this.UNRChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.UNRPanPodgladWykresu = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.UNRTBarZmieńGrubośćLinii)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UNRDgvPrzedSortowaniem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UNRDgvPoSortowaniu)).BeginInit();
@@ -81,6 +82,7 @@
             this.UNRBtnWybierzKolorLinii.TabIndex = 0;
             this.UNRBtnWybierzKolorLinii.Text = "Wybierz kolor linii\r\n";
             this.UNRBtnWybierzKolorLinii.UseVisualStyleBackColor = true;
+            this.UNRBtnWybierzKolorLinii.Click += new System.EventHandler(this.UNRBtnWybierzKolorLinii_Click);
             // 
             // UNRBtnWybierzKolorTła
             // 
@@ -91,9 +93,11 @@
             this.UNRBtnWybierzKolorTła.TabIndex = 1;
             this.UNRBtnWybierzKolorTła.Text = "Wybierz kolor tła dla obszaru wykresu";
             this.UNRBtnWybierzKolorTła.UseVisualStyleBackColor = true;
+            this.UNRBtnWybierzKolorTła.Click += new System.EventHandler(this.UNRBtnWybierzKolorTła_Click);
             // 
             // UNRTBoxWziernikKoloruLinii
             // 
+            this.UNRTBoxWziernikKoloruLinii.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.UNRTBoxWziernikKoloruLinii.Location = new System.Drawing.Point(192, 80);
             this.UNRTBoxWziernikKoloruLinii.Margin = new System.Windows.Forms.Padding(4);
             this.UNRTBoxWziernikKoloruLinii.Name = "UNRTBoxWziernikKoloruLinii";
@@ -120,22 +124,31 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Wziernik koloru tła \r\n      dla wykresu";
             // 
-            // UNRTBoxWziernikKoloruTła
+            // UNRTBoxWziernikKoloruTla
             // 
-            this.UNRTBoxWziernikKoloruTła.Location = new System.Drawing.Point(526, 80);
-            this.UNRTBoxWziernikKoloruTła.Margin = new System.Windows.Forms.Padding(4);
-            this.UNRTBoxWziernikKoloruTła.Name = "UNRTBoxWziernikKoloruTła";
-            this.UNRTBoxWziernikKoloruTła.Size = new System.Drawing.Size(112, 20);
-            this.UNRTBoxWziernikKoloruTła.TabIndex = 5;
+            this.UNRTBoxWziernikKoloruTla.Location = new System.Drawing.Point(526, 80);
+            this.UNRTBoxWziernikKoloruTla.Margin = new System.Windows.Forms.Padding(4);
+            this.UNRTBoxWziernikKoloruTla.Name = "UNRTBoxWziernikKoloruTla";
+            this.UNRTBoxWziernikKoloruTla.Size = new System.Drawing.Size(112, 20);
+            this.UNRTBoxWziernikKoloruTla.TabIndex = 5;
             // 
             // UNRComboBoxUstalStylLiniiWykresu
             // 
             this.UNRComboBoxUstalStylLiniiWykresu.FormattingEnabled = true;
+            this.UNRComboBoxUstalStylLiniiWykresu.Items.AddRange(new object[] {
+            "Nie ustawiony",
+            "---------------",
+            ".........................",
+            ".-.-.-.-.-.-.-.-.-.",
+            "-..-..-..-..-..-..-..",
+            "_______________"});
             this.UNRComboBoxUstalStylLiniiWykresu.Location = new System.Drawing.Point(718, 80);
             this.UNRComboBoxUstalStylLiniiWykresu.Margin = new System.Windows.Forms.Padding(4);
             this.UNRComboBoxUstalStylLiniiWykresu.Name = "UNRComboBoxUstalStylLiniiWykresu";
             this.UNRComboBoxUstalStylLiniiWykresu.Size = new System.Drawing.Size(140, 22);
             this.UNRComboBoxUstalStylLiniiWykresu.TabIndex = 6;
+            this.UNRComboBoxUstalStylLiniiWykresu.Text = "Wybor stylu linii";
+            this.UNRComboBoxUstalStylLiniiWykresu.SelectedValueChanged += new System.EventHandler(this.UNRComboBoxUstalStylLiniiWykresu_SelectedValueChanged);
             // 
             // label3
             // 
@@ -151,10 +164,14 @@
             // 
             this.UNRTBarZmieńGrubośćLinii.Location = new System.Drawing.Point(1014, 80);
             this.UNRTBarZmieńGrubośćLinii.Margin = new System.Windows.Forms.Padding(4);
+            this.UNRTBarZmieńGrubośćLinii.Maximum = 12;
+            this.UNRTBarZmieńGrubośćLinii.Minimum = 1;
             this.UNRTBarZmieńGrubośćLinii.Name = "UNRTBarZmieńGrubośćLinii";
             this.UNRTBarZmieńGrubośćLinii.Size = new System.Drawing.Size(122, 45);
             this.UNRTBarZmieńGrubośćLinii.TabIndex = 8;
             this.UNRTBarZmieńGrubośćLinii.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.UNRTBarZmieńGrubośćLinii.Value = 1;
+            this.UNRTBarZmieńGrubośćLinii.Scroll += new System.EventHandler(this.UNRTBarZmieńGrubośćLinii_Scroll);
             // 
             // label4
             // 
@@ -173,6 +190,8 @@
             this.UNRTBoxUstalonaGrubośćLiniiLiczbowo.Name = "UNRTBoxUstalonaGrubośćLiniiLiczbowo";
             this.UNRTBoxUstalonaGrubośćLiniiLiczbowo.Size = new System.Drawing.Size(127, 20);
             this.UNRTBoxUstalonaGrubośćLiniiLiczbowo.TabIndex = 10;
+            this.UNRTBoxUstalonaGrubośćLiniiLiczbowo.Text = "1";
+            this.UNRTBoxUstalonaGrubośćLiniiLiczbowo.TextChanged += new System.EventHandler(this.UNRTBoxUstalonaGrubośćLiniiLiczbowo_TextChanged);
             // 
             // label5
             // 
@@ -187,7 +206,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1011, 225);
+            this.label6.Location = new System.Drawing.Point(1011, 211);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(129, 14);
@@ -382,19 +401,26 @@
             // 
             // UNRChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.UNRChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.UNRChart.Legends.Add(legend1);
+            chartArea6.Name = "ChartArea1";
+            this.UNRChart.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.UNRChart.Legends.Add(legend6);
             this.UNRChart.Location = new System.Drawing.Point(277, 118);
             this.UNRChart.Name = "UNRChart";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.UNRChart.Series.Add(series1);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.UNRChart.Series.Add(series6);
             this.UNRChart.Size = new System.Drawing.Size(682, 405);
             this.UNRChart.TabIndex = 34;
             this.UNRChart.Text = "chart1";
+            // 
+            // UNRPanPodgladWykresu
+            // 
+            this.UNRPanPodgladWykresu.Location = new System.Drawing.Point(1030, 230);
+            this.UNRPanPodgladWykresu.Name = "UNRPanPodgladWykresu";
+            this.UNRPanPodgladWykresu.Size = new System.Drawing.Size(100, 40);
+            this.UNRPanPodgladWykresu.TabIndex = 35;
             // 
             // UNRGlowne
             // 
@@ -402,6 +428,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(1278, 672);
+            this.Controls.Add(this.UNRPanPodgladWykresu);
             this.Controls.Add(this.UNRChart);
             this.Controls.Add(this.UNRDgvPoSortowaniu);
             this.Controls.Add(this.UNRDgvPrzedSortowaniem);
@@ -429,7 +456,7 @@
             this.Controls.Add(this.UNRTBarZmieńGrubośćLinii);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.UNRComboBoxUstalStylLiniiWykresu);
-            this.Controls.Add(this.UNRTBoxWziernikKoloruTła);
+            this.Controls.Add(this.UNRTBoxWziernikKoloruTla);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.UNRTBoxWziernikKoloruLinii);
@@ -455,7 +482,7 @@
         private System.Windows.Forms.TextBox UNRTBoxWziernikKoloruLinii;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox UNRTBoxWziernikKoloruTła;
+        private System.Windows.Forms.TextBox UNRTBoxWziernikKoloruTla;
         private System.Windows.Forms.ComboBox UNRComboBoxUstalStylLiniiWykresu;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TrackBar UNRTBarZmieńGrubośćLinii;
@@ -483,6 +510,7 @@
         private System.Windows.Forms.DataGridView UNRDgvPrzedSortowaniem;
         private System.Windows.Forms.DataGridView UNRDgvPoSortowaniu;
         private System.Windows.Forms.DataVisualization.Charting.Chart UNRChart;
+        private System.Windows.Forms.Panel UNRPanPodgladWykresu;
 
 
     }
