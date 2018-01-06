@@ -24,8 +24,9 @@ namespace Projekt1_UlewiczNienajadloRekawek
         List<UNRCzasy> UNRTablicaPomiarowa = new List<UNRCzasy>();
         List<UNRCzasy> UNRTablicaOstateczna = new List<UNRCzasy>();
         DataTable UNRtable;
-        
-        
+        bool UNRSprawdzenie = false;
+
+
         public UNRGlowne()
         {
             InitializeComponent();
@@ -33,14 +34,15 @@ namespace Projekt1_UlewiczNienajadloRekawek
             UNRDgvPrzedSortowaniem.Visible = false;
             UNRChart.Visible = false;
             KR_Zmien_Styl_linii();
-           
+
 
         }
 
         private void UNRBtnWynikiFormaTabelaryczna_Click(object sender, EventArgs e)
         {
             //int start, stop;
-            UNRConversionTB();
+            //UNRConversionTB();
+            if (UNRSprawdzPola() == true) { 
             UNRLosowanie();
             //int UNROstatecznyRozmiar;
             double UNROstatecznyCzas = 0;
@@ -48,35 +50,36 @@ namespace Projekt1_UlewiczNienajadloRekawek
             for (int UNRAktRozmiar = 0; UNRAktRozmiar < UNRMaxRozmiarTablic; UNRAktRozmiar++) //generowanie aktualnego rozmiaru tablicy
             {
 
-                for (int UNRProba = 0; UNRProba < UNRLiczbaPowtorzen; UNRProba++) {         //generowanie liczby tablic o danym rozmiarze
+                for (int UNRProba = 0; UNRProba < UNRLiczbaPowtorzen; UNRProba++)
+                {         //generowanie liczby tablic o danym rozmiarze
 
                     UNRUtils.UNRLosowanie(UNRDolnaGranica, UNRGornaGranica, UNRAktRozmiar, UNRTablicaSortowania);
                     UNRCzasy UNRczas_sortowania_ob = new UNRCzasy();
-                    if (UNRShell.Checked == true) 
-                    { 
-                    UNRShell UNRShell_ob = new UNRShell(UNRTablicaSortowania);
-                    UNRDgvPrzedSortowaniem.Visible = false;
-                    UNRwatch.Reset();
-                    UNRwatch.Start();
-                    UNRTablicaPoSortowaniu = UNRShell_ob.Sortuj();
-                    UNRwatch.Stop();
-                    UNRczas_sortowania_ob.UNRUstawRozmiar(UNRAktRozmiar);
-                    UNRczas_sortowania_ob.UNRUstawCzasPomiaru(1000000 * UNRwatch.ElapsedTicks / Stopwatch.Frequency); //pomiar czasu w mikrosekundach
-                    UNRTablicaPomiarowa.Add(UNRczas_sortowania_ob);
+                    if (UNRShell.Checked == true)
+                    {
+                        UNRShell UNRShell_ob = new UNRShell(UNRTablicaSortowania);
+                        UNRDgvPrzedSortowaniem.Visible = false;
+                        UNRwatch.Reset();
+                        UNRwatch.Start();
+                        UNRTablicaPoSortowaniu = UNRShell_ob.Sortuj();
+                        UNRwatch.Stop();
+                        UNRczas_sortowania_ob.UNRUstawRozmiar(UNRAktRozmiar);
+                        UNRczas_sortowania_ob.UNRUstawCzasPomiaru(1000000 * UNRwatch.ElapsedTicks / Stopwatch.Frequency); //pomiar czasu w mikrosekundach
+                        UNRTablicaPomiarowa.Add(UNRczas_sortowania_ob);
                     }
                     if (UNRGrzebieniowe.Checked == true)
                     {
                         UNRGrzebieniowe UNRGrzebieniowe_ob = new UNRGrzebieniowe(UNRTablicaSortowania);
-                    UNRDgvPrzedSortowaniem.Visible = false;
-                    UNRwatch.Reset();
-                    UNRwatch.Start();
-                    UNRTablicaPoSortowaniu = UNRGrzebieniowe_ob.Sortuj();
-                    UNRwatch.Stop();
-                    UNRczas_sortowania_ob.UNRUstawRozmiar(UNRAktRozmiar);
-                    UNRczas_sortowania_ob.UNRUstawCzasPomiaru(1000000 * UNRwatch.ElapsedTicks / Stopwatch.Frequency); //pomiar czasu w mikrosekundach
-                    UNRTablicaPomiarowa.Add(UNRczas_sortowania_ob);
+                        UNRDgvPrzedSortowaniem.Visible = false;
+                        UNRwatch.Reset();
+                        UNRwatch.Start();
+                        UNRTablicaPoSortowaniu = UNRGrzebieniowe_ob.Sortuj();
+                        UNRwatch.Stop();
+                        UNRczas_sortowania_ob.UNRUstawRozmiar(UNRAktRozmiar);
+                        UNRczas_sortowania_ob.UNRUstawCzasPomiaru(1000000 * UNRwatch.ElapsedTicks / Stopwatch.Frequency); //pomiar czasu w mikrosekundach
+                        UNRTablicaPomiarowa.Add(UNRczas_sortowania_ob);
                     }
-                
+
                 }
 
             }
@@ -109,8 +112,8 @@ namespace Projekt1_UlewiczNienajadloRekawek
             UNRDgvPoSortowaniu.Visible = true;
 
             UNRFlagaPrzycisku = true;
-            
-            
+
+            }
 
         }
 
@@ -168,69 +171,65 @@ namespace Projekt1_UlewiczNienajadloRekawek
 
         private void UNRBtnWizualizacjaTablicyPrzedSortowaniem_Click(object sender, EventArgs e)
         {
-                
-                UNRLosowanie();
-                var UNRListToSee = new BindingList<Int32>(UNRTablicaSortowania);
-                DataTable table = UNRUtils.UNRConvertListToDataTable(UNRTablicaSortowania);
-                UNRDgvPrzedSortowaniem.DataSource = table;
-                UNRDgvPrzedSortowaniem.Visible = true;
-           
-             
+            if (UNRSprawdzPola() == true) { 
+            UNRLosowanie();
+            var UNRListToSee = new BindingList<Int32>(UNRTablicaSortowania);
+            DataTable table = UNRUtils.UNRConvertListToDataTable(UNRTablicaSortowania);
+            UNRDgvPrzedSortowaniem.DataSource = table;
+            UNRDgvPrzedSortowaniem.Visible = true;
+            }
+
+
         }
 
-        private void UNRLosowanie() {
+        private void UNRLosowanie()
+        {
+            if (UNRSprawdzPola() == true)
+            {
+                //Utwórz losową tablicę
+                UNRTablicaSortowania = UNRUtils.UNRLosowanie(UNRDolnaGranica, UNRGornaGranica, UNRMaxRozmiarTablic, UNRTablicaSortowania);
 
-            UNRConversionTB();
-            //Utwórz losową tablicę
-            UNRTablicaSortowania = UNRUtils.UNRLosowanie(UNRDolnaGranica, UNRGornaGranica, UNRMaxRozmiarTablic, UNRTablicaSortowania);
+            }
 
-     
-        
         }
 
-         private void UNRBtnWizualizacjaTablicyPoSortowaniem_Click(object sender, EventArgs e)
-         {
-             UNRConversionTB();
+        private void UNRBtnWizualizacjaTablicyPoSortowaniem_Click(object sender, EventArgs e)
+        {
+            if (UNRSprawdzPola() == true) { 
+            //UNRConversionTB();
 
-             if (UNRShell.Checked == true)
-             {
+            if (UNRShell.Checked == true)
+            {
 
 
-                 UNRShell Shell = new UNRShell(UNRTablicaSortowania);
-                 UNRDgvPrzedSortowaniem.Visible = false;               
-                 UNRTablicaPoSortowaniu = Shell.Sortuj();
-                 var UNRListToSee = new BindingList<Int32>(UNRTablicaPoSortowaniu);
-                 DataTable table = UNRUtils.UNRConvertListToDataTable(UNRTablicaPoSortowaniu);
-                 UNRDgvPoSortowaniu.DataSource = table;
-                 UNRDgvPoSortowaniu.Visible = true;
-                 
+                UNRShell Shell = new UNRShell(UNRTablicaSortowania);
+                UNRDgvPrzedSortowaniem.Visible = false;
+                UNRTablicaPoSortowaniu = Shell.Sortuj();
+                var UNRListToSee = new BindingList<Int32>(UNRTablicaPoSortowaniu);
+                DataTable table = UNRUtils.UNRConvertListToDataTable(UNRTablicaPoSortowaniu);
+                UNRDgvPoSortowaniu.DataSource = table;
+                UNRDgvPoSortowaniu.Visible = true;
 
-             }
 
-             else if (UNRGrzebieniowe.Checked == true)
-             {
+            }
 
-                 UNRGrzebieniowe Grzebieniowe = new UNRGrzebieniowe(UNRTablicaSortowania);
-                 UNRDgvPrzedSortowaniem.Visible = false;
+            else if (UNRGrzebieniowe.Checked == true)
+            {
 
-                 UNRTablicaPoSortowaniu = Grzebieniowe.Sortuj();
-                 var UNRListToSee = new BindingList<Int32>(UNRTablicaPoSortowaniu);
-                 DataTable table = UNRUtils.UNRConvertListToDataTable(UNRTablicaPoSortowaniu);
-                 UNRDgvPoSortowaniu.DataSource = table;
-                 UNRDgvPoSortowaniu.Visible = true;
-             };
-        
-         }
+                UNRGrzebieniowe Grzebieniowe = new UNRGrzebieniowe(UNRTablicaSortowania);
+                UNRDgvPrzedSortowaniem.Visible = false;
 
-         private bool UNRConversionTB() {
+                UNRTablicaPoSortowaniu = Grzebieniowe.Sortuj();
+                var UNRListToSee = new BindingList<Int32>(UNRTablicaPoSortowaniu);
+                DataTable table = UNRUtils.UNRConvertListToDataTable(UNRTablicaPoSortowaniu);
+                UNRDgvPoSortowaniu.DataSource = table;
+                UNRDgvPoSortowaniu.Visible = true;
+            };
+            }
+        }
 
-             Int32.TryParse(UNRTBoxMinimalnaProba.Text, out UNRLiczbaPowtorzen);
-             Int32.TryParse(UNRTBoxMaxRozmiarTablic.Text, out UNRMaxRozmiarTablic);
-             Int32.TryParse(UNRTBoxDolnaGranicaPrzedzialu.Text, out UNRDolnaGranica);
-             Int32.TryParse(UNRTBoxGornaGranicaPrzedzialu.Text, out UNRGornaGranica);
+      
 
-             return true;
-         }
 
         void KR_Zmien_Styl_linii()
         {
@@ -261,12 +260,12 @@ namespace Projekt1_UlewiczNienajadloRekawek
             SolidBrush KR_solid = new SolidBrush(Color.White);
             UNRg.FillRectangle(KR_solid, KR_rect);
             UNRg.DrawLine(UNRMyPen, 0, 20, 100, 20);
-        
+
         }
 
-         private void UNRBtnWybierzKolorLinii_Click(object sender, EventArgs e)
-         {
-              ColorDialog UNRokienkoKoloru = new ColorDialog();
+        private void UNRBtnWybierzKolorLinii_Click(object sender, EventArgs e)
+        {
+            ColorDialog UNRokienkoKoloru = new ColorDialog();
             if (UNRokienkoKoloru.ShowDialog() == DialogResult.OK)
             {
                 UNRTBoxWziernikKoloruLinii.BackColor = UNRokienkoKoloru.Color;
@@ -277,7 +276,7 @@ namespace Projekt1_UlewiczNienajadloRekawek
 
         private void UNRBtnWybierzKolorTła_Click(object sender, EventArgs e)
         {
-         ColorDialog UNRokienkoKoloru = new ColorDialog();
+            ColorDialog UNRokienkoKoloru = new ColorDialog();
             if (UNRokienkoKoloru.ShowDialog() == DialogResult.OK)
             {
                 UNRTBoxWziernikKoloruTla.BackColor = UNRokienkoKoloru.Color;
@@ -310,19 +309,155 @@ namespace Projekt1_UlewiczNienajadloRekawek
 
         private void UNRBtnDemo_Click(object sender, EventArgs e)
         {
-            if (UNRShell.Checked == true) { 
-            UNRShellDemo UNRShellDemo = new Projekt1_UlewiczNienajadloRekawek.UNRShellDemo();
-            UNRShellDemo.Show();
+            if (UNRShell.Checked == true)
+            {
+                UNRShellDemo UNRShellDemo = new Projekt1_UlewiczNienajadloRekawek.UNRShellDemo();
+                UNRShellDemo.Show();
             }
 
-            if (UNRGrzebieniowe.Checked == true) {
+            if (UNRGrzebieniowe.Checked == true)
+            {
 
                 UNRComboSort UNRComboDemo = new Projekt1_UlewiczNienajadloRekawek.UNRComboSort();
                 UNRComboDemo.Show();
-            
+
             }
         }
-         }
 
-        
+        private bool UNRSprawdzPola() {
+
+            if (string.IsNullOrEmpty(UNRTBoxMinimalnaProba.Text))
+            {
+
+                UNREP_Sprawdz.SetError(UNRTBoxMinimalnaProba, "Minimalna próba musi być wprowadzona");
+                return false;
+
+            }
+
+            else UNREP_Sprawdz.Dispose();
+
+            if (string.IsNullOrEmpty(UNRTBoxMaxRozmiarTablic.Text))
+            {
+
+                UNREP_Sprawdz.SetError(UNRTBoxMaxRozmiarTablic, "Maxymalny rozmiar tablic musi zostać wprowadzony");
+                return false;
+
+            }
+
+            else UNREP_Sprawdz.Dispose();
+
+            if (string.IsNullOrEmpty(UNRTBoxDolnaGranicaPrzedzialu.Text))
+            {
+
+                UNREP_Sprawdz.SetError(UNRTBoxDolnaGranicaPrzedzialu, "Dolny zakres losowania musi zostać wprowadzony");
+                return false;
+
+            }
+
+            else UNREP_Sprawdz.Dispose();
+
+            if (string.IsNullOrEmpty(UNRTBoxDolnaGranicaPrzedzialu.Text))
+            {
+
+                UNREP_Sprawdz.SetError(UNRTBoxDolnaGranicaPrzedzialu, "Dolny zakres losowania musi zostać wprowadzony");
+                return false;
+
+            }
+
+            else UNREP_Sprawdz.Dispose();
+
+
+
+            if (string.IsNullOrEmpty(UNRTBoxGornaGranicaPrzedzialu.Text))
+            {
+
+                UNREP_Sprawdz.SetError(UNRTBoxGornaGranicaPrzedzialu, "Górny zakres losowania musi zostać wprowadzony");
+                return false;
+
+            }
+
+            else UNREP_Sprawdz.Dispose();
+
+            //Int32.TryParse(UNRTBoxDolnaGranicaPrzedzialu.Text, out UNRDolnaGranica);
+            //Int32.TryParse(UNRTBoxGornaGranicaPrzedzialu.Text, out UNRGornaGranica);
+
+            if (!Int32.TryParse(UNRTBoxMinimalnaProba.Text, out UNRLiczbaPowtorzen))
+            {
+
+                UNREP_Sprawdz.SetError(UNRTBoxMinimalnaProba, "Minimalna liczba próba musi być cyfrą");
+                return false;
+
+            }
+
+            else UNREP_Sprawdz.Dispose();
+
+            if (!Int32.TryParse(UNRTBoxMaxRozmiarTablic.Text, out UNRMaxRozmiarTablic))
+            {
+
+                UNREP_Sprawdz.SetError(UNRTBoxMaxRozmiarTablic, "Maxymalny zakres tablic musi być cyfrą");
+                return false;
+
+            }
+            else UNREP_Sprawdz.Dispose();
+
+            if (!Int32.TryParse(UNRTBoxDolnaGranicaPrzedzialu.Text, out UNRDolnaGranica))
+            {
+
+                UNREP_Sprawdz.SetError(UNRTBoxDolnaGranicaPrzedzialu, "Dolna granica musi być cyfrą");
+                return false;
+
+            }
+            else UNREP_Sprawdz.Dispose();
+
+            if (!Int32.TryParse(UNRTBoxMaxRozmiarTablic.Text, out UNRGornaGranica))
+            {
+
+                UNREP_Sprawdz.SetError(UNRTBoxGornaGranicaPrzedzialu, "Górna granica musi być cyfrą");
+                return false;
+
+            }
+            else UNREP_Sprawdz.Dispose();
+
+            if (UNRGornaGranica < UNRDolnaGranica) {
+
+                UNREP_Sprawdz.SetError(UNRTBoxDolnaGranicaPrzedzialu, "Dolna granica musi większa od górnej granicy");
+                UNREP_Sprawdz.SetError(UNRTBoxGornaGranicaPrzedzialu, "Górna granica musi być mniejsza od dolnej granicy");
+                return false;
+            }
+            else UNREP_Sprawdz.Dispose();
+
+            if (UNRLiczbaPowtorzen <= 0)
+            {
+
+                UNREP_Sprawdz.SetError(UNRTBoxMinimalnaProba, "Liczba powtórzeń musi być wartością większą od 0");
+                return false;
+
+            
+            }
+            else UNREP_Sprawdz.Dispose();
+
+            if (UNRMaxRozmiarTablic <= 0)
+            {
+
+                UNREP_Sprawdz.SetError(UNRTBoxMaxRozmiarTablic, "Rozmiar tablic musi być wartością większą od 0");
+                return false;
+
+
+            }
+            else UNREP_Sprawdz.Dispose();
+
+            if (UNRGrzebieniowe.Checked == false && UNRShell.Checked == false) {
+
+                UNREP_Sprawdz.SetError(UNRGrzebieniowe, "Proszę wybrać sortowanie");
+                UNREP_Sprawdz.SetError(UNRShell, "Proszę wybrać sortowanie");
+                return false;
+            
+            }
+            else UNREP_Sprawdz.Dispose();
+
+            return true;
+        }
     }
+
+
+}
