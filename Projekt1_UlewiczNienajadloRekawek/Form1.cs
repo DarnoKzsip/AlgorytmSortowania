@@ -310,8 +310,17 @@ namespace Projekt1_UlewiczNienajadloRekawek
 
         private void UNRBtnDemo_Click(object sender, EventArgs e)
         {
+            if (UNRShell.Checked == true) { 
             UNRShellDemo UNRShellDemo = new Projekt1_UlewiczNienajadloRekawek.UNRShellDemo();
             UNRShellDemo.Show();
+            }
+
+            if (UNRGrzebieniowe.Checked == true) {
+
+                UNRComboSort UNRComboDemo = new Projekt1_UlewiczNienajadloRekawek.UNRComboSort();
+                UNRComboDemo.Show();
+            
+            }
         }
          }
 
