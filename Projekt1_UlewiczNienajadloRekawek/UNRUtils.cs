@@ -63,5 +63,36 @@ namespace Projekt1_UlewiczNienajadloRekawek
             return UNRtable;
         }
 
+        public static DataTable UNRConvertListToDataTableCzasy(List<UNRCzasy> UNRlist)
+        {
+
+            DataTable UNRtable = new DataTable();
+
+
+            UNRtable.Columns.Add("Rozmiar");
+            UNRtable.Columns.Add("Czas z Pomiaru");
+
+            //// Add columns.
+            //for (int i = 0; i < 2; i++)
+            //{
+
+            //    table.Columns.Add();
+
+            //}
+
+
+            int UNRn = 0;
+            //UNRtable.Rows.Add(UNRlist[0].UNRGetRozmiar(), UNRlist[0].UNRGetCzasPomiaru());
+            // Dodaj wiersz.
+            foreach (var UNRarray in UNRlist)
+            {
+                //table.Rows.Add(n);
+                UNRtable.Rows.Add(UNRn, UNRarray.UNRGetCzasPomiaru());
+                UNRn++;
+            }
+
+            return UNRtable;
+        }
+
     }
 }

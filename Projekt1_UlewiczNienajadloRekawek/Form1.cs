@@ -21,7 +21,8 @@ namespace Projekt1_UlewiczNienajadloRekawek
         List<Int32> UNRTablicaSortowania = new List<Int32>();
         List<Int32> UNRTablicaPoSortowaniu = new List<Int32>();
         List<UNRCzasy> UNRTablicaPomiarowa = new List<UNRCzasy>();
-        Stopwatch watch = new Stopwatch();
+        List<UNRCzasy> UNRTablicaOstateczna = new List<UNRCzasy>();
+        
         
         public UNRGlowne()
         {
@@ -34,34 +35,80 @@ namespace Projekt1_UlewiczNienajadloRekawek
 
         private void UNRBtnWynikiFormaTabelaryczna_Click(object sender, EventArgs e)
         {
+            //int start, stop;
             UNRConversionTB();
             UNRLosowanie();
+            //int UNROstatecznyRozmiar;
+            double UNROstatecznyCzas = 0;
+            Stopwatch UNRwatch = new Stopwatch();
             for (int UNRAktRozmiar = 0; UNRAktRozmiar < UNRMaxRozmiarTablic; UNRAktRozmiar++) //generowanie aktualnego rozmiaru tablicy
             {
 
                 for (int UNRProba = 0; UNRProba < UNRLiczbaPowtorzen; UNRProba++) {         //generowanie liczby tablic o danym rozmiarze
 
                     UNRUtils.UNRLosowanie(UNRDolnaGranica, UNRGornaGranica, UNRAktRozmiar, UNRTablicaSortowania);
-                    UNRShell Shell = new UNRShell(UNRTablicaSortowania);
-                    UNRCzasy czas_sortowania = new UNRCzasy();
+                    UNRCzasy UNRczas_sortowania_ob = new UNRCzasy();
+                    if (UNRShell.Checked == true) 
+                    { 
+                    UNRShell UNRShell_ob = new UNRShell(UNRTablicaSortowania);
                     UNRDgvPrzedSortowaniem.Visible = false;
-                    watch.Reset();
-                    watch.Start();
-                    UNRTablicaPoSortowaniu = Shell.Sortuj();
-                    watch.Stop();
-                    czas_sortowania.UNRUstawRozmiar(UNRAktRozmiar);
-                    czas_sortowania.UNRUstawCzasPomiaru(watch.ElapsedTicks);
-                    UNRTablicaPomiarowa.Add(czas_sortowania);
-                    //var UNRListToSee = new BindingList<Int32>(UNRTablicaPoSortowaniu);
-                    //DataTable table = UNRUtils.UNRConvertListToDataTable(UNRTablicaPoSortowaniu);
-                    //UNRDgvPoSortowaniu.DataSource = table;
-                    //UNRDgvPoSortowaniu.Visible = true;
+                    UNRwatch.Reset();
+                    UNRwatch.Start();
+                    UNRTablicaPoSortowaniu = UNRShell_ob.Sortuj();
+                    UNRwatch.Stop();
+                    UNRczas_sortowania_ob.UNRUstawRozmiar(UNRAktRozmiar);
+                    UNRczas_sortowania_ob.UNRUstawCzasPomiaru(1000000 * UNRwatch.ElapsedTicks / Stopwatch.Frequency); //pomiar czasu w mikrosekundach
+                    UNRTablicaPomiarowa.Add(UNRczas_sortowania_ob);
+                    }
+                    if (UNRGrzebieniowe.Checked == true)
+                    {
+                        UNRGrzebieniowe UNRGrzebieniowe_ob = new UNRGrzebieniowe(UNRTablicaSortowania);
+                    UNRDgvPrzedSortowaniem.Visible = false;
+                    UNRwatch.Reset();
+                    UNRwatch.Start();
+                    UNRTablicaPoSortowaniu = UNRGrzebieniowe_ob.Sortuj();
+                    UNRwatch.Stop();
+                    UNRczas_sortowania_ob.UNRUstawRozmiar(UNRAktRozmiar);
+                    UNRczas_sortowania_ob.UNRUstawCzasPomiaru(1000000 * UNRwatch.ElapsedTicks / Stopwatch.Frequency); //pomiar czasu w mikrosekundach
+                    UNRTablicaPomiarowa.Add(UNRczas_sortowania_ob);
+                    }
                 
                 }
 
             }
 
-            MessageBox.Show("ok");
+           // UNRCzasy UNRCzasy_ostateczne = new UNRCzasy();
+
+            for (int UNRi = 1; UNRi < UNRTablicaPomiarowa.Count; UNRi++)
+            {
+
+                UNRCzasy UNRCzasy_ostateczne = new UNRCzasy();
+
+                if (UNRTablicaPomiarowa[UNRi].UNRGetRozmiar() == UNRTablicaPomiarowa[UNRi - 1].UNRGetRozmiar())
+                {
+
+                    UNROstatecznyCzas = UNROstatecznyCzas + UNRTablicaPomiarowa[UNRi].UNRGetCzasPomiaru();
+
+                }
+                else
+                {
+
+                    UNROstatecznyCzas = UNROstatecznyCzas / UNRLiczbaPowtorzen;
+                    UNRCzasy_ostateczne.UNRUstawCzasPomiaru(UNROstatecznyCzas);
+                    UNRCzasy_ostateczne.UNRUstawRozmiar(UNRTablicaPomiarowa[UNRi].UNRGetRozmiar());
+                    UNRTablicaOstateczna.Add(UNRCzasy_ostateczne);
+                    UNROstatecznyCzas = 0;
+                }
+            }
+
+
+
+            //var UNRListToSee = new BindingList<Int32>(UNRTablicaOstateczna);
+            DataTable UNRtable = UNRUtils.UNRConvertListToDataTableCzasy(UNRTablicaOstateczna);
+            UNRDgvPoSortowaniu.DataSource = UNRtable;
+            UNRDgvPoSortowaniu.Visible = true;
+
+                MessageBox.Show("ok");
                 
 
             //if (UNRShell.Checked == true)
@@ -138,10 +185,8 @@ namespace Projekt1_UlewiczNienajadloRekawek
 
 
                  UNRShell Shell = new UNRShell(UNRTablicaSortowania);
-                 UNRDgvPrzedSortowaniem.Visible = false;
-                 watch.Start();
+                 UNRDgvPrzedSortowaniem.Visible = false;               
                  UNRTablicaPoSortowaniu = Shell.Sortuj();
-                 watch.Stop();
                  var UNRListToSee = new BindingList<Int32>(UNRTablicaPoSortowaniu);
                  DataTable table = UNRUtils.UNRConvertListToDataTable(UNRTablicaPoSortowaniu);
                  UNRDgvPoSortowaniu.DataSource = table;

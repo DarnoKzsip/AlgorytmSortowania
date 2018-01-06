@@ -9,8 +9,8 @@ namespace Projekt1_UlewiczNienajadloRekawek
     class UNRCzasy
     {
         int UNRrozmiar;
-        long UNRczaspomiar;
-        int UNRczasobliczony;
+        double UNRczaspomiar;
+        double UNRczasobliczony;
 
         public UNRCzasy() { 
         
@@ -22,15 +22,36 @@ namespace Projekt1_UlewiczNienajadloRekawek
 
         }
 
-        public long UNRUstawCzasPomiaru(long UNRCzasPomiar) {
+        public double UNRUstawCzasPomiaru(double UNRCzasPomiar) {
 
             return this.UNRczaspomiar = UNRCzasPomiar;
         
         }
 
-        void UNRUstawCzasObliczony() { 
-        //TODO Dopisać obliczanie czasu
+        public double UNRUstawCzasObliczony(long UNRCzasPomiar)
+        {
+            return this.UNRczasobliczony = UNRCzasPomiar;
         
+        }
+
+        public int UNRGetRozmiar()
+        {
+
+            return this.UNRrozmiar;
+
+        }
+
+        public double UNRGetCzasPomiaru()
+        {
+
+            return this.UNRczaspomiar;
+
+        }
+
+        public double UNRGetCzasObliczony()
+        {
+            return this.UNRczasobliczony;
+
         }
     }
 }
