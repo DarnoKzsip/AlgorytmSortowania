@@ -10,7 +10,7 @@ namespace Projekt1_UlewiczNienajadloRekawek
     {
         List<int> UNRTablicaPrzedSortowaniem;
         List<int> UNRTablicaPoSortowaniu;
-        double UNRgap;
+        
 
         public UNRGrzebieniowe(List<int> UNRTablicaPrzedSortowaniem)
         {

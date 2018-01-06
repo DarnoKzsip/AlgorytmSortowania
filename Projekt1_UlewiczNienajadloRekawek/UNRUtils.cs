@@ -15,8 +15,8 @@ namespace Projekt1_UlewiczNienajadloRekawek
         public static List<Int32> UNRLosowanie(int UNRDolnaGranica, int UNRGornaGranica, int UNRMaxRozmiarTablic, List<Int32> UNRTablicaSortowania)
         {
 
-            
-            int UNRSeed = 0;
+            Random UNRRandomseed = new Random();
+            int UNRSeed = Convert.ToInt32(UNRRandomseed.Next(0, 1000));
            
             for (int i = 0; i < UNRMaxRozmiarTablic; i++)
             {
