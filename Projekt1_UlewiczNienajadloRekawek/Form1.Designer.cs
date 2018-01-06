@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.UNRBtnWybierzKolorLinii = new System.Windows.Forms.Button();
             this.UNRBtnWybierzKolorTła = new System.Windows.Forms.Button();
             this.UNRTBoxWziernikKoloruLinii = new System.Windows.Forms.TextBox();
@@ -60,9 +63,11 @@
             this.UNRShell = new System.Windows.Forms.RadioButton();
             this.UNRDgvPrzedSortowaniem = new System.Windows.Forms.DataGridView();
             this.UNRDgvPoSortowaniu = new System.Windows.Forms.DataGridView();
+            this.UNRChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.UNRTBarZmieńGrubośćLinii)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UNRDgvPrzedSortowaniem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UNRDgvPoSortowaniu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNRChart)).BeginInit();
             this.SuspendLayout();
             // 
             // UNRBtnWybierzKolorLinii
@@ -293,6 +298,7 @@
             this.UNRBtnWynikiFormaWykresu.TabIndex = 25;
             this.UNRBtnWynikiFormaWykresu.Text = "Wyniki analizy algorytmu sortowania w formie wykresu";
             this.UNRBtnWynikiFormaWykresu.UseVisualStyleBackColor = true;
+            this.UNRBtnWynikiFormaWykresu.Click += new System.EventHandler(this.UNRBtnWynikiFormaWykresu_Click);
             // 
             // UNRBtnResetuj
             // 
@@ -374,12 +380,29 @@
             this.UNRDgvPoSortowaniu.Size = new System.Drawing.Size(682, 405);
             this.UNRDgvPoSortowaniu.TabIndex = 33;
             // 
+            // UNRChart
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.UNRChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.UNRChart.Legends.Add(legend1);
+            this.UNRChart.Location = new System.Drawing.Point(277, 118);
+            this.UNRChart.Name = "UNRChart";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.UNRChart.Series.Add(series1);
+            this.UNRChart.Size = new System.Drawing.Size(682, 405);
+            this.UNRChart.TabIndex = 34;
+            this.UNRChart.Text = "chart1";
+            // 
             // UNRGlowne
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(1278, 672);
+            this.Controls.Add(this.UNRChart);
             this.Controls.Add(this.UNRDgvPoSortowaniu);
             this.Controls.Add(this.UNRDgvPrzedSortowaniem);
             this.Controls.Add(this.UNRShell);
@@ -419,6 +442,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.UNRTBarZmieńGrubośćLinii)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UNRDgvPrzedSortowaniem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UNRDgvPoSortowaniu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNRChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -458,6 +482,7 @@
         private System.Windows.Forms.RadioButton UNRShell;
         private System.Windows.Forms.DataGridView UNRDgvPrzedSortowaniem;
         private System.Windows.Forms.DataGridView UNRDgvPoSortowaniu;
+        private System.Windows.Forms.DataVisualization.Charting.Chart UNRChart;
 
 
     }

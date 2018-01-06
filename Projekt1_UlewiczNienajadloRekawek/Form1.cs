@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Projekt1_UlewiczNienajadloRekawek
 {
@@ -17,11 +18,13 @@ namespace Projekt1_UlewiczNienajadloRekawek
         Int32 UNRMaxRozmiarTablic;
         Int32 UNRDolnaGranica;
         Int32 UNRGornaGranica;
+        bool UNRFlagaPrzycisku = false; //Znacznik naciśnięcia tablicy w formie tabelarycznej
         //int UNRSeed = 0; // inicjator wartości Random(bez wstawiania tych samych wartości ze względu na Timestamp)
         List<Int32> UNRTablicaSortowania = new List<Int32>();
         List<Int32> UNRTablicaPoSortowaniu = new List<Int32>();
         List<UNRCzasy> UNRTablicaPomiarowa = new List<UNRCzasy>();
         List<UNRCzasy> UNRTablicaOstateczna = new List<UNRCzasy>();
+        DataTable UNRtable;
         
         
         public UNRGlowne()
@@ -29,6 +32,7 @@ namespace Projekt1_UlewiczNienajadloRekawek
             InitializeComponent();
             UNRDgvPoSortowaniu.Visible = false;
             UNRDgvPrzedSortowaniem.Visible = false;
+            UNRChart.Visible = false;
            
 
         }
@@ -104,11 +108,12 @@ namespace Projekt1_UlewiczNienajadloRekawek
 
 
             //var UNRListToSee = new BindingList<Int32>(UNRTablicaOstateczna);
-            DataTable UNRtable = UNRUtils.UNRConvertListToDataTableCzasy(UNRTablicaOstateczna);
+            UNRtable = UNRUtils.UNRConvertListToDataTableCzasy(UNRTablicaOstateczna);
             UNRDgvPoSortowaniu.DataSource = UNRtable;
             UNRDgvPoSortowaniu.Visible = true;
 
-                MessageBox.Show("ok");
+            UNRFlagaPrzycisku = true;
+                //MessageBox.Show("ok");
                 
 
             //if (UNRShell.Checked == true)
@@ -129,6 +134,39 @@ namespace Projekt1_UlewiczNienajadloRekawek
             //}
             
 
+        }
+
+        private void UNRBtnWynikiFormaWykresu_Click(object sender, EventArgs e)
+        {
+            UNRDgvPoSortowaniu.Visible = false;
+            UNRDgvPrzedSortowaniem.Visible = false;
+            UNRChart.Visible = true;
+
+            if (UNRFlagaPrzycisku == false)
+            {
+                UNRBtnWynikiFormaTabelaryczna_Click(sender, e);
+            }
+
+            int[] UNRWykresWielkosci = new int[UNRTablicaOstateczna.Count];
+            double[] UNRWykresPomiaru = new double[UNRTablicaOstateczna.Count]; ;
+
+            for (int UNRi = 0; UNRi < UNRTablicaOstateczna.Count; UNRi++)
+            {
+                UNRWykresWielkosci[UNRi] = UNRTablicaOstateczna[UNRi].UNRGetRozmiar();
+                UNRWykresPomiaru[UNRi] = UNRTablicaOstateczna[UNRi].UNRGetCzasPomiaru();
+
+
+            }
+
+            UNRChart.Series[0].ChartType = SeriesChartType.Line;
+            UNRChart.Series[0].BorderDashStyle = ChartDashStyle.Solid;
+            UNRChart.Titles.Add("Wykres pomiaru");
+            //UNRChart.BackColor = white; //Ustalenie tła wykresu
+            UNRChart.Series[0].Name = "Pomiar pomierzony";  //Ustalenie nazwy dla wykresu
+            //UNRChart.Series[0].Color = KR_LB_Kolor_linii.BackColor; //Ustalenie koloru linii
+            //KR_chart_Graficzna_prezentacja.Series[0].BorderWidth = Convert.ToInt16(KR_NUD_Grubosc.Value);
+            UNRChart.Series[0].Points.DataBindXY(UNRWykresWielkosci, UNRWykresPomiaru);
+            MessageBox.Show("ok");
         }
 
         private void UNRBtnWizualizacjaTablicyPrzedSortowaniem_Click(object sender, EventArgs e)
@@ -219,5 +257,7 @@ namespace Projekt1_UlewiczNienajadloRekawek
 
              return true;
          }
+
+        
     }
 }
