@@ -67,6 +67,7 @@ namespace Projekt1_UlewiczNienajadloRekawek
                         UNRwatch.Stop();
                         UNRczas_sortowania_ob.UNRUstawRozmiar(UNRAktRozmiar);
                         UNRczas_sortowania_ob.UNRUstawCzasPomiaru(1000000 * UNRwatch.ElapsedTicks / Stopwatch.Frequency); //pomiar czasu w mikrosekundach
+                        UNRczas_sortowania_ob.UNRUstawCzasObliczony((UNRAktRozmiar * UNRAktRozmiar));
                         UNRTablicaPomiarowa.Add(UNRczas_sortowania_ob);
                     }
                     if (UNRGrzebieniowe.Checked == true)
@@ -79,6 +80,7 @@ namespace Projekt1_UlewiczNienajadloRekawek
                         UNRwatch.Stop();
                         UNRczas_sortowania_ob.UNRUstawRozmiar(UNRAktRozmiar);
                         UNRczas_sortowania_ob.UNRUstawCzasPomiaru(1000000 * UNRwatch.ElapsedTicks / Stopwatch.Frequency); //pomiar czasu w mikrosekundach
+                        UNRczas_sortowania_ob.UNRUstawCzasObliczony((UNRAktRozmiar * UNRAktRozmiar * UNRAktRozmiar));
                         UNRTablicaPomiarowa.Add(UNRczas_sortowania_ob);
                     }
 
@@ -103,6 +105,7 @@ namespace Projekt1_UlewiczNienajadloRekawek
 
                     UNROstatecznyCzas = UNROstatecznyCzas / UNRLiczbaPowtorzen;
                     UNRCzasy_ostateczne.UNRUstawCzasPomiaru(UNROstatecznyCzas);
+                    UNRCzasy_ostateczne.UNRUstawCzasObliczony(UNRTablicaPomiarowa[UNRi].UNRGetCzasObliczony());
                     UNRCzasy_ostateczne.UNRUstawRozmiar(UNRTablicaPomiarowa[UNRi].UNRGetRozmiar());
                     UNRTablicaOstateczna.Add(UNRCzasy_ostateczne);
                     UNROstatecznyCzas = 0;
@@ -140,21 +143,24 @@ namespace Projekt1_UlewiczNienajadloRekawek
             }
 
             int[] UNRWykresWielkosci = new int[UNRTablicaOstateczna.Count];
-            double[] UNRWykresPomiaru = new double[UNRTablicaOstateczna.Count]; ;
+            double[] UNRWykresPomiaru = new double[UNRTablicaOstateczna.Count]; 
+            double[] UNRWykresObliczenia = new double[UNRTablicaOstateczna.Count]; ;
 
             for (int UNRi = 0; UNRi < UNRTablicaOstateczna.Count; UNRi++)
             {
                 UNRWykresWielkosci[UNRi] = UNRTablicaOstateczna[UNRi].UNRGetRozmiar();
                 UNRWykresPomiaru[UNRi] = UNRTablicaOstateczna[UNRi].UNRGetCzasPomiaru();
-
+                UNRWykresObliczenia[UNRi] = UNRTablicaOstateczna[UNRi].UNRGetCzasObliczony();
 
             }
 
             UNRChart.Series[0].ChartType = SeriesChartType.Line;
+            UNRChart.Series[1].ChartType = SeriesChartType.Line;
             UNRChart.Series[0].BorderDashStyle = ChartDashStyle.Solid;
             UNRChart.Titles.Add("Wykres pomiaru");
             UNRChart.BackColor = UNRTBoxWziernikKoloruTla.BackColor; //Ustalenie tła wykresu
             UNRChart.Series[0].Name = "Pomiar pomierzony";  //Ustalenie nazwy dla wykresu
+            UNRChart.Series[1].Name = "Pomiar obliczony przypadek najgorszy";  //Ustalenie nazwy dla wykresu
             UNRChart.Series[0].Color = UNRTBoxWziernikKoloruLinii.BackColor; //Ustalenie koloru linii
             UNRChart.Series[0].BorderWidth = Convert.ToInt16(UNRTBoxUstalonaGrubośćLiniiLiczbowo.Text);
 
@@ -177,7 +183,8 @@ namespace Projekt1_UlewiczNienajadloRekawek
             }
 
             UNRChart.Series[0].Points.DataBindXY(UNRWykresWielkosci, UNRWykresPomiaru);
-            MessageBox.Show("ok");
+            UNRChart.Series[1].Points.DataBindXY(UNRWykresWielkosci, UNRWykresObliczenia);
+           // MessageBox.Show("ok");
         }
 
         private void UNRBtnWizualizacjaTablicyPrzedSortowaniem_Click(object sender, EventArgs e)
@@ -396,8 +403,6 @@ namespace Projekt1_UlewiczNienajadloRekawek
 
             else UNREP_Sprawdz.Dispose();
 
-            //Int32.TryParse(UNRTBoxDolnaGranicaPrzedzialu.Text, out UNRDolnaGranica);
-            //Int32.TryParse(UNRTBoxGornaGranicaPrzedzialu.Text, out UNRGornaGranica);
 
             if (!Int32.TryParse(UNRTBoxMinimalnaProba.Text, out UNRLiczbaPowtorzen))
             {

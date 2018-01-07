@@ -28,7 +28,7 @@ namespace Projekt1_UlewiczNienajadloRekawek
         
         }
 
-        public double UNRUstawCzasObliczony(long UNRCzasPomiar)
+        public double UNRUstawCzasObliczony(double UNRCzasPomiar)
         {
             return this.UNRczasobliczony = UNRCzasPomiar;
         

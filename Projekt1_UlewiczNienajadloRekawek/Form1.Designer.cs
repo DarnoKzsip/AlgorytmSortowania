@@ -32,6 +32,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.UNRBtnWybierzKolorLinii = new System.Windows.Forms.Button();
             this.UNRBtnWybierzKolorTła = new System.Windows.Forms.Button();
             this.UNRTBoxWziernikKoloruLinii = new System.Windows.Forms.TextBox();
@@ -234,6 +235,7 @@
             this.UNRTBoxMinimalnaProba.Name = "UNRTBoxMinimalnaProba";
             this.UNRTBoxMinimalnaProba.Size = new System.Drawing.Size(143, 20);
             this.UNRTBoxMinimalnaProba.TabIndex = 14;
+            this.UNRTBoxMinimalnaProba.Text = "2";
             // 
             // UNRTBoxMaxRozmiarTablic
             // 
@@ -242,6 +244,7 @@
             this.UNRTBoxMaxRozmiarTablic.Name = "UNRTBoxMaxRozmiarTablic";
             this.UNRTBoxMaxRozmiarTablic.Size = new System.Drawing.Size(143, 20);
             this.UNRTBoxMaxRozmiarTablic.TabIndex = 15;
+            this.UNRTBoxMaxRozmiarTablic.Text = "20";
             // 
             // label8
             // 
@@ -270,6 +273,7 @@
             this.UNRTBoxDolnaGranicaPrzedzialu.Name = "UNRTBoxDolnaGranicaPrzedzialu";
             this.UNRTBoxDolnaGranicaPrzedzialu.Size = new System.Drawing.Size(143, 20);
             this.UNRTBoxDolnaGranicaPrzedzialu.TabIndex = 18;
+            this.UNRTBoxDolnaGranicaPrzedzialu.Text = "0";
             // 
             // label10
             // 
@@ -288,6 +292,7 @@
             this.UNRTBoxGornaGranicaPrzedzialu.Name = "UNRTBoxGornaGranicaPrzedzialu";
             this.UNRTBoxGornaGranicaPrzedzialu.Size = new System.Drawing.Size(143, 20);
             this.UNRTBoxGornaGranicaPrzedzialu.TabIndex = 20;
+            this.UNRTBoxGornaGranicaPrzedzialu.Text = "100";
             // 
             // label11
             // 
@@ -415,7 +420,11 @@
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series2";
             this.UNRChart.Series.Add(series1);
+            this.UNRChart.Series.Add(series2);
             this.UNRChart.Size = new System.Drawing.Size(682, 405);
             this.UNRChart.TabIndex = 34;
             this.UNRChart.Text = "chart1";
