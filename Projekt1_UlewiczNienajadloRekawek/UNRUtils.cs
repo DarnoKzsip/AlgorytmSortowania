@@ -42,20 +42,10 @@ namespace Projekt1_UlewiczNienajadloRekawek
             UNRtable.Columns.Add("Pozycja");
             UNRtable.Columns.Add("Wartość");
 
-            //// Add columns.
-            //for (int i = 0; i < 2; i++)
-            //{
-
-            //    table.Columns.Add();
-
-            //}
-
-
             int UNRn = 0;
             // Dodaj wiersz.
             foreach (var UNRarray in UNRlist)
             {
-                //table.Rows.Add(n);
                 UNRtable.Rows.Add(UNRn, UNRarray);
                 UNRn++;
             }
@@ -70,24 +60,13 @@ namespace Projekt1_UlewiczNienajadloRekawek
 
 
             UNRtable.Columns.Add("Rozmiar");
-            UNRtable.Columns.Add("Czas z Pomiaru");
+            UNRtable.Columns.Add("Czas z pomiaru");
             UNRtable.Columns.Add("Czas obliczony");
 
-            //// Add columns.
-            //for (int i = 0; i < 2; i++)
-            //{
-
-            //    table.Columns.Add();
-
-            //}
-
-
             int UNRn = 0;
-            //UNRtable.Rows.Add(UNRlist[0].UNRGetRozmiar(), UNRlist[0].UNRGetCzasPomiaru());
             // Dodaj wiersz.
             foreach (var UNRarray in UNRlist)
             {
-                //table.Rows.Add(n);
                 UNRtable.Rows.Add(UNRn, UNRarray.UNRGetCzasPomiaru(), UNRarray.UNRGetCzasObliczony());
                 UNRn++;
             }

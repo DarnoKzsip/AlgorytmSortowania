@@ -41,11 +41,8 @@ namespace Projekt1_UlewiczNienajadloRekawek
 
         private void UNRBtnWynikiFormaTabelaryczna_Click(object sender, EventArgs e)
         {
-            //int start, stop;
-            //UNRConversionTB();
             if (UNRSprawdzPola() == true) { 
             UNRLosowanie();
-            //int UNROstatecznyRozmiar;
             double UNROstatecznyCzas = 0;
             Stopwatch UNRwatch = new Stopwatch();
             UNRTablicaPomiarowa.Clear(); //czyszczenie tablicy z pozostałych elementów
@@ -102,7 +99,6 @@ namespace Projekt1_UlewiczNienajadloRekawek
                 }
                 else
                 {
-
                     UNROstatecznyCzas = UNROstatecznyCzas / UNRLiczbaPowtorzen;
                     UNRCzasy_ostateczne.UNRUstawCzasPomiaru(UNROstatecznyCzas);
                     UNRCzasy_ostateczne.UNRUstawCzasObliczony(UNRTablicaPomiarowa[UNRi].UNRGetCzasObliczony());
@@ -184,7 +180,6 @@ namespace Projekt1_UlewiczNienajadloRekawek
 
             UNRChart.Series[0].Points.DataBindXY(UNRWykresWielkosci, UNRWykresPomiaru);
             UNRChart.Series[1].Points.DataBindXY(UNRWykresWielkosci, UNRWykresObliczenia);
-           // MessageBox.Show("ok");
         }
 
         private void UNRBtnWizualizacjaTablicyPrzedSortowaniem_Click(object sender, EventArgs e)
@@ -216,7 +211,6 @@ namespace Projekt1_UlewiczNienajadloRekawek
         private void UNRBtnWizualizacjaTablicyPoSortowaniem_Click(object sender, EventArgs e)
         {
             if (UNRSprawdzPola() == true) { 
-            //UNRConversionTB();
             if (UNRFlagaPrzyciskuPrzed == false) {
                 UNRBtnWizualizacjaTablicyPrzedSortowaniem_Click(sender, e);
             }
@@ -227,7 +221,6 @@ namespace Projekt1_UlewiczNienajadloRekawek
                 UNRShell Shell = new UNRShell(UNRTablicaSortowania);
                 UNRDgvPrzedSortowaniem.Visible = false;
                 UNRTablicaPoSortowaniu = Shell.Sortuj();
-                //var UNRListToSee = new BindingList<Int32>(UNRTablicaPoSortowaniu);
                 DataTable UNRtable = UNRUtils.UNRConvertListToDataTable(UNRTablicaPoSortowaniu);
                 UNRDgvPoSortowaniu.DataSource = UNRtable;
                 UNRDgvPrzedSortowaniem.Visible = false;
@@ -242,9 +235,7 @@ namespace Projekt1_UlewiczNienajadloRekawek
 
                 UNRGrzebieniowe Grzebieniowe = new UNRGrzebieniowe(UNRTablicaSortowania);
                 UNRDgvPrzedSortowaniem.Visible = false;
-
                 UNRTablicaPoSortowaniu = Grzebieniowe.Sortuj();
-                //var UNRListToSee = new BindingList<Int32>(UNRTablicaPoSortowaniu);
                 DataTable UNRtable = UNRUtils.UNRConvertListToDataTable(UNRTablicaPoSortowaniu);
                 UNRDgvPoSortowaniu.DataSource = UNRtable;
                 UNRDgvPrzedSortowaniem.Visible = false;
@@ -329,7 +320,13 @@ namespace Projekt1_UlewiczNienajadloRekawek
 
         private void UNRBtnResetuj_Click(object sender, EventArgs e)
         {
-
+            UNRTBoxMinimalnaProba.Text = "";
+            UNRTBoxMaxRozmiarTablic.Text = "";
+            UNRTBoxDolnaGranicaPrzedzialu.Text = "";
+            UNRTBoxGornaGranicaPrzedzialu.Text = "";
+            UNRDgvPoSortowaniu.Visible = false;
+            UNRDgvPrzedSortowaniem.Visible = false;
+            UNRChart.Visible = false;
         }
 
         private void UNRBtnDemo_Click(object sender, EventArgs e)
